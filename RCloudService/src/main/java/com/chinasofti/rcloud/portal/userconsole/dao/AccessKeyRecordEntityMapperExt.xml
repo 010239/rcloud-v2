@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinasofti.rcloud.portal.userconsole.dao.AccessKeyRecordEntityMapperExt">
+
+	<select id="validOrderCount" resultType="int">
+		SELECT
+			SUM(A.CUN)
+		FROM
+			(
+				SELECT
+					count(*)CUN
+				FROM
+					portal_service_order
+				WHERE
+					timestampdiff(MINUTE, now(), end_time)> 0
+				AND STATUS = 1
+				AND order_id = #{orderId}  
+				UNION ALL
+					SELECT
+						count(*)CUN
+					FROM
+						portal_service_order
+					WHERE
+						STATUS = 1
+					AND order_id = #{orderId} 
+					AND end_time = ''  or end_time is null
+			)A
+	</select>
+	
+	<select id="validOrderCount2" resultType="int">
+	    select count(*) from portal_service_order 
+	      where mark_delete = 0 and status = 1 and buyer_id = #{userId} and service_id = #{serviceId}
+	</select>
+	
+	<select id="getServiceNameById" resultType="String">
+		select service_name from boss_service 
+		<where>
+		 service_id=#{id} 
+		</where>
+	</select>
+	
+	<select id="getAccessKeySecretById" resultType="map">
+		select access_key_secret secret,user_id userId from portal_access_key_record 
+		<where>
+		 status = 1 and access_key_id=#{id} 
+		</where>
+	</select>
+  
+  	<update id="activateServiceCredential" parameterType="com.chinasofti.rcloud.domain.AccessKeyRecordEntity">
+		update portal_access_key_record 
+		set status = #{status},active_time = #{activeTime},service_order_id = #{serviceOrderId}
+		where access_key_id = #{accessKeyId}
+    </update>
+    
+    <update id="cancelServiceCredential" parameterType="map">
+		update portal_access_key_record 
+		set status = #{status} 
+		where access_key_id = #{id}
+    </update>
+
+</mapper>

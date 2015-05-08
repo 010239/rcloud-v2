@@ -1,0 +1,256 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<title>注册</title>
+<script>
+$(function(){
+	//tab
+	$('.gf_list_tab dl').click(function(){
+		$('.gf_list_tab dl').removeClass('gf_tab_on');
+		$(this).addClass('gf_tab_on');
+		$('.gf_regis_ul1').removeClass('gf_on');
+		$('.gf_regis_ul1').eq($(this).index()).addClass('gf_on');
+	});
+	
+	(function(){
+		//用户注册
+		$('.gf_tab_lmx1 .gf_regis_user_btn').click(function(){
+			$('.gf_tab_lmx1 .gf_regis_li1').hide();
+			$('.gf_tab_lmx1 .gf_regis_li2').show();
+		})
+		$('.gf_tab_lmx1 .gf_regis_btn2').click(function(){
+			$('.gf_tab_lmx1 .gf_regis_li2').hide();
+			$('.gf_tab_lmx1 .gf_regis_li3').show();	
+		});
+		//机构注册
+		$('.gf_tab_lmx2 .gf_regis_corp_btn').click(function(){
+			$('.gf_tab_lmx2 .gf_regis_li1').hide();
+			$('.gf_tab_lmx2 .gf_regis_li2').show();
+		})
+		$('.gf_tab_lmx2 .gf_regis_btn2').click(function(){
+			$('.gf_tab_lmx2 .gf_regis_li2').hide();
+			$('.gf_tab_lmx2 .gf_regis_li3').show();	
+		});
+		
+	})()
+	
+});
+</script>
+</head>
+<body>
+<div class="gf_header_t">
+	<div class="gf_header_box">
+    	<h1 class="left"><a href="index.html"><img src="images/logo.png" alt="logo" /></a></h1>
+        <h2 class="left">账号注册</h2>
+        <p class="right"><a href="index.html">Rcloud首页</a>|<a href="javascript:;">服务平台首页</a>|<a href="javascript:;">帮助中心</a></p>
+    </div>
+</div>
+<!--content start-->
+<div class="gf_regist_warp">
+	<div class="gf_reg_content">
+    	<h1><i>注册<span class="gf_blue">Rcloud</span>云账号</i><em>我已经注册，现在就<a href="login.html"  class="gf_blue">登录</a></em></h1>
+    	<div class="gf_list_tab cf gf_regis_borer_none">
+            	<dl class="cf left gf_tab_off gf_tab_on ">
+                    <dd><a href="#gf_list_title1">用户注册</a></dd>
+                </dl>
+                <dl class="cf left gf_tab_off">
+                    <dd><a href="#gf_list_title2">机构注册</a></dd>
+                </dl>
+        </div>
+        <div class="gf_register_tab">
+        	<ul class="gf_regis_ul1 gf_tab_lmx1 gf_on">
+                <li class="gf_regis_li1 gf_on">
+                    <div class="gf_reg_img ">
+                        <img src="images/bg/reg_img1.png"/>
+                        <ul class="gf_reg_num cf">
+                            <li class="gf_on">填写注册信息</li>
+                            <li>验证账号信息</li>
+                            <li>注册成功</li>
+                        </ul>
+                    </div>
+                    <div class="gf_regis_imform ">
+                        <form>
+                            <dl class="cf">
+                                <dt><span>*</span>电子邮箱:</dt>
+                                <!--input class="suc"  验证成功-->
+                                <!--input class="err"  验证失败-->
+                                <dd><input class="suc" type="text" placeholder="电子邮箱作为用户名"/><b>不能为空</b></dd>
+                               
+                            </dl>
+                            <dl class="cf gf_pass_leval">
+                                <dt><span>*</span>登录密码:</dt>
+                                <dd><input class="err" type="text"  /><b>不能为空</b></dd>
+                                <!-- div class="" 弱-->
+                                <!-- div class="gf_leval2" 中-->
+                                <!-- div class="gf_leval3" 强-->
+                                <div class="gf_leval2">
+                                    <em>弱</em><span>中</span><i>强</i>
+                                </div>
+                            </dl>
+                            <dl class="cf">
+                                <dt><span>*</span>确认登录密码:</dt>
+                                <dd><input type="text"/><b>不能为空</b></dd>
+                            </dl>
+                            <dl class="cf gf_reg_btn">
+                                <dt></dt>
+                                <dd><input type="submit" value="同意协议并注册" class="gf_regis_user_btn"/></dd>
+                            </dl>
+                            <dl class="cf gf_reg_xieyi">
+                                <dt></dt>
+                                <dd><a href="#">《Rcloud云平台网站协议》</a></dd>
+                            </dl>
+                        </form>
+                    </div>
+                </li>
+                <li class="gf_regis_li2">
+                    <div class="gf_reg_img gf_padd_b34">
+                        <img src="images/bg/reg_img2.png"/>
+                        <ul class="gf_reg_num cf">
+                            <li>填写注册信息</li>
+                            <li  class="gf_on">验证账号信息</li>
+                            <li>注册成功</li>
+                        </ul>
+                    </div>
+                    <div  class="gf_regis_imform gf_padd_bottom150">
+                        <p>验证码已发送至你的邮箱，请登录您的邮箱确认</p>
+                        <dl class="cf">
+                            <dt><span>*</span>验证码:</dt>
+                            <!--input class="suc"  验证成功-->
+                            <!--input class="err"  验证失败-->
+                            <dd><input class="suc" type="text" placeholder=""/><b>不能为空</b></dd>
+                         </dl>
+                         <dl class="cf gf_reg_btn">
+                            <dt></dt>
+                            <dd><input type="submit" value="点击下一步" class="gf_regis_btn2"/></dd>
+                        </dl>
+                    </div>
+                </li>
+                <li class="gf_regis_li3">
+                    <div class="gf_reg_img gf_padd_b34">
+                        <img src="images/bg/reg_img3.png"/>
+                        <ul class="gf_reg_num cf">
+                            <li>填写注册信息</li>
+                            <li>验证账号信息</li>
+                            <li  class="gf_on">注册成功</li>
+                        </ul>
+                    </div>
+                    <div  class="gf_regis_imform gf_padd_bottom150">
+                        <p >您已成功注册，跳转至<a  class="gf_col_red" href="login.html">登录</a>页面</p>
+                    </div>	
+                </li>
+            </ul>
+            <ul class="gf_regis_ul1 gf_tab_lmx2">
+            	<li class="gf_regis_li1 gf_on">
+                    <div class="gf_reg_img gf_padd_b34">
+                        <img src="images/bg/reg_img1.png"/>
+                        <ul class="gf_reg_num cf">
+                            <li class="gf_on">2填写注册信息</li>
+                            <li>验证账号信息</li>
+                            <li>注册成功</li>
+                        </ul>
+                    </div>
+                    <div class="gf_regis_imform ">
+                        <form>
+                            <dl class="cf">
+                                <dt class="gf_regis_t_lmx">机构信息</dt>
+                            </dl>
+                            <dl class="cf">
+                                <dt><span>*</span>机构名称:</dt>
+                                <!--input class="suc"  验证成功-->
+                                <!--input class="err"  验证失败-->
+                                <dd><input class="suc" type="text" placeholder=""/><b>不能为空</b></dd>
+                               
+                            </dl>
+                            <dl class="cf">
+                                <dt><span>*</span>机构描述:</dt>
+                                <!--input class="suc"  验证成功-->
+                                <!--input class="err"  验证失败-->
+                                <dd><input class="suc" type="text" placeholder=""/><b>不能为空</b></dd>
+                               
+                            </dl>
+                            <dl class="cf">
+                                <dt class="gf_regis_t_lmx">机构管理员信息</dt>
+                            </dl>
+                            <dl class="cf">
+                                <dt><span>*</span>电子邮箱:</dt>
+                                <!--input class="suc"  验证成功-->
+                                <!--input class="err"  验证失败-->
+                                <dd><input class="suc" type="text" placeholder=""/><b>不能为空</b></dd>
+                               
+                            </dl>
+                            <dl class="cf gf_pass_leval">
+                                <dt><span>*</span>登录密码:</dt>
+                                <dd><input class="err" type="password"  /><b>不能为空</b></dd>
+                                <!-- div class="" 弱-->
+                                <!-- div class="gf_leval2" 中-->
+                                <!-- div class="gf_leval3" 强-->
+                                <div class="gf_leval2">
+                                    <em>弱</em><span>中</span><i>强</i>
+                                </div>
+                            </dl>
+                            <dl class="cf">
+                                <dt><span>*</span>确认登录密码:</dt>
+                                <dd><input type="password"/><b>不能为空</b></dd>
+                            </dl>
+                            <dl class="cf gf_reg_btn">
+                                <dt></dt>
+                                <dd><input type="submit" value="同意协议并注册" class="gf_regis_corp_btn"/></dd>
+                            </dl>
+                            <dl class="cf gf_reg_xieyi">
+                                <dt></dt>
+                                <dd><a href="#">《Rcloud云平台网站协议》</a></dd>
+                            </dl>
+                        </form>
+                    </div>
+                </li>
+                <li class="gf_regis_li2">
+                    <div class="gf_reg_img gf_padd_b34">
+                        <img src="images/bg/reg_img2.png"/>
+                        <ul class="gf_reg_num cf">
+                            <li>填写注册信息</li>
+                            <li  class="gf_on">验证账号信息</li>
+                            <li>注册成功</li>
+                        </ul>
+                    </div>
+                    <div  class="gf_regis_imform gf_padd_bottom150">
+                        <p>验证码已发送至你的邮箱，请登录您的邮箱确认</p>
+                        <dl class="cf">
+                            <dt><span>*</span>验证码:</dt>
+                            <!--input class="suc"  验证成功-->
+                            <!--input class="err"  验证失败-->
+                            <dd><input class="suc" type="text" placeholder=""/><b>不能为空</b></dd>
+                         </dl>
+                         <dl class="cf gf_reg_btn">
+                            <dt></dt>
+                            <dd><input type="submit" value="点击下一步" class="gf_regis_btn2"/></dd>
+                        </dl>
+                    </div>
+                </li>
+                <li class="gf_regis_li3">
+                    <div class="gf_reg_img gf_padd_b34">
+                        <img src="images/bg/reg_img3.png"/>
+                        <ul class="gf_reg_num cf">
+                            <li>填写注册信息</li>
+                            <li>验证账号信息</li>
+                            <li  class="gf_on">注册成功</li>
+                        </ul>
+                    </div>
+                    <div  class="gf_regis_imform gf_padd_bottom150">
+                        <p >您已成功注册，跳转至<a  class="gf_col_red" href="login.html">登录</a>页面</p>
+                    </div>	
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="gf_footer">
+    <div class="gf_company_imform">
+    	<p>版权所有 © 2013-2014 中软国际公司   京ICP备14011895号-1</p>
+        <p>电话：+86 010 888482388 转 6326 传真：+86 010 8286 2809 邮箱：wubin@chinasofti.com</p>
+    </div>
+</div>
+<!--content end-->
+</body>
+</html>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinasofti.rcloud.portal.userbill.dao.BillingMonthEntityMapperExt">
+	<resultMap id="BillingMonthResultMap" type="com.chinasofti.rcloud.domain.BillingMonthEntity" 
+		extends="com.chinasofti.rcloud.dao.BillingMonthEntityMapper.BaseResultMap">
+		
+	</resultMap>
+	
+	<select id="getProdNameList" parameterType="map"  resultType="map">
+	SELECT  
+		p.prod_name prodName ,
+		m.charge charge
+	FROM boss_billing_month m 
+	LEFT JOIN boss_products p ON m.prod_id =p.prod_id
+	WHERE 
+		m.charge_month=#{chargeMonth} 
+		AND m.charge_year=#{chargeYear} 
+		AND m.user_id=#{userId}
+	</select>
+	
+	<select id="getBillingMonthPro" parameterType="map" resultMap="BillingMonthResultMap">
+		SELECT  m.* FROM  boss_billing_month m,boss_service_bill b WHERE   b.charge_month = m.charge_month   AND  b.charge_year = m.charge_year  AND b.user_id = m.user_id
+		and b.charge_month=#{charge_month} and b.charge_year=#{charge_year} and b.user_id=#{user_id}
+	</select>
+</mapper>

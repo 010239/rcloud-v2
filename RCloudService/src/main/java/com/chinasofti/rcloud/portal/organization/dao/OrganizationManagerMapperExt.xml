@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.chinasofti.rcloud.portal.organization.dao.OrganizationManagerMapperExt">
+
+
+	<select id="getOrganizationInfo" resultType="map">
+		<!--  
+		SELECT
+		bo.organization_chname,
+		ps.space_chname,
+		pu.space_id
+		FROM
+		portal_space_to_user pu
+		JOIN portal_space ps ON pu.space_id =
+		ps.space_id
+		JOIN boss_organization bo ON ps.organization_id =
+		bo.organization_id
+		WHERE
+		bo.organization_id = #{orgId}
+		GROUP BY
+		pu.space_id
+		-->
+
+		SELECT
+		bo.organization_chname,
+		ps.space_chname,
+		ps.space_id
+		FROM
+		boss_organization bo
+		JOIN portal_space ps ON bo.organization_id = ps.organization_id
+		WHERE
+		bo.organization_id = #{orgId}
+		GROUP BY
+		ps.space_id
+
+	</select>
+
+	<select id="getOrganizationDeveloperInfo" parameterType="map"
+		resultType="map">
+		SELECT
+		puser.*
+		FROM
+		portal_user puser
+		where
+		puser.organization_id = #{organizationId} AND
+		puser.role_code =
+		#{roleCode}
+	</select>
+	
+	<select id="getUserOfOrganization" parameterType="map" resultType="map">
+	 SELECT u.user_id, u.user_email, u.real_name, s.space_chname
+	 FROM portal_user AS u
+ 	 LEFT JOIN portal_space_to_user AS t ON u.user_id = t.user_id
+ 	 LEFT JOIN portal_space AS s ON t.space_id = s.space_id
+ 	 WHERE u.mark_delete = 0
+ 	 AND u.organization_id = #{orgId}
+ 	 AND u.role_code = #{rolecode}
+ </select>
+</mapper> 

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chinasofti.rcloud.portal.userbill.dao.BossServiceBillEntityMapperExt" >
+
+  <resultMap id="BossBillResultMap" type="BossServiceBillEntityExt"
+  		extends="com.chinasofti.rcloud.dao.BossServiceBillEntityMapper.BaseResultMap">
+	  <result column="prod_name" property="prodName" jdbcType="VARCHAR" />
+	  <result column="createTime" property="createTime" jdbcType="VARCHAR" />
+  </resultMap>
+  
+   <resultMap id="BillInfoResultMap" type="com.chinasofti.rcloud.portal.userbill.domain.BossBillInfoEntityExt" >
+  </resultMap>
+  
+  
+  <sql id="Base_Column_List">
+  	b.service_bill_id, b.user_id, b.total_charge, b.account_start, b.account_end, b.charge_month, b.charge_year
+  </sql>
+  
+  
+  <select id="getBillByPage" parameterType="map"  resultMap="BossBillResultMap">
+ 	SELECT
+ 	<include refid="Base_Column_List"/>,   CONCAT(b.charge_year,'-',b.charge_month ) createTime
+ 	FROM
+ 	boss_service_bill b
+ 	<where>
+          b.user_id = #{userId}  
+		<if test="billStartTime != null">
+  			AND b.account_start &gt;= #{billStartTime}
+  		</if>
+  		<if test="billEndTime != null">
+  			AND b.account_start &lt;= #{billEndTime}
+  		</if>
+    </where>
+    ORDER BY b.charge_month DESC
+  </select>
+  
+  
+  <select id="countBillList" parameterType="map"  resultType="java.lang.Integer">
+ 	SELECT
+ 	COUNT(b.service_bill_id)
+ 	FROM
+ 	boss_service_bill b
+ 	<where>
+        b.user_id = #{userId}  
+		<if test="billStartTime != null">
+  			AND b.account_start &gt;= #{billStartTime}
+  		</if>
+  		<if test="billEndTime != null">
+  			AND b.account_start &lt;= #{billEndTime}
+  		</if>
+    </where>
+    ORDER BY b.charge_month DESC
+  </select>
+  
+  
+  <select id="getBillInfo" parameterType="map"  resultMap="BillInfoResultMap">
+ 	SELECT
+	m.billing_month_id billingMonthId, m.charge, p.prod_name prodName,  CONCAT(m.charge_year,'-',m.charge_month ) createTime
+ 	FROM boss_billing_month m 
+	LEFT JOIN boss_products p  ON m.prod_id = p.prod_id
+	WHERE  m.user_id = #{userId} and m.charge_month = #{chargeMonth}
+  </select>
+</mapper>

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinasofti.rcloud.portal.userorder.dao.ApplicationOrderEntityMapperExt">
+
+	<resultMap id="ApplicationOrderResultMap" type="ApplicationOrderEntityExt" extends="com.chinasofti.rcloud.dao.ApplicationOrderEntityMapper.ResultMapWithBLOBs">
+		<association property="user" column="provider_id" javaType="UserEntity">
+			<id column="user_id" property="userId" jdbcType="VARCHAR" />
+			<result column="user_name" property="userName" jdbcType="VARCHAR" />
+    	</association>
+    	<association property="application" column="provider_id" javaType="ApplicationEntity">
+			<id column="application_id" property="applicationId" jdbcType="VARCHAR" />
+			<result column="chname" property="chname" jdbcType="VARCHAR" />
+			<result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+			<result column="chname" property="chname" jdbcType="VARCHAR" />
+			<result column="base_app" property="baseApp" jdbcType="VARCHAR" />
+			<result column="allowdownload" property="allowdownload" jdbcType="INTEGER" />
+    	</association>
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+  	o.order_id, o.order_number, o.buyer_id, o.application_id, o.order_status,
+  	o.end_time, o.created_time, o.provider_id, o.order_description, o.maintenance_costs,
+  	o.pay_pattern, o.sub_domain, o.cancel_time, o.cancel_reason		
+  </sql>
+  
+  <select id="getSaleApplicationOrderByPage" parameterType="map" resultMap="ApplicationOrderResultMap">
+  	SELECT 
+  	o.order_id, o.order_number ,o.order_status, o.application_id, u.user_name ,a.chname
+  	FROM	
+  	portal_application_order o, portal_user u, portal_application a
+  	<where>
+  	o.provider_id = u.user_id AND o.provider_id = a.provider_id AND o.application_id = a.application_id 
+  	<if test="orderStatus != null and orderStatus !='' ">
+    AND o.order_status = #{orderStatus}
+  	</if>
+  	<if test="orderStartTime != null">
+  	AND o.created_time &gt;= #{orderStartTime}
+  	</if>
+  	<if test="orderEndTime != null">
+  	AND o.created_time &lt;= #{orderEndTime}
+  	</if>
+  	AND o.provider_id= #{userId}
+  	</where>
+  	ORDER BY o.created_time DESC
+  </select>
+  
+  
+  <select id="getBuyApplicationOrderByPage" parameterType="map" resultMap="ApplicationOrderResultMap">
+  	SELECT 
+  	o.order_id, o.order_number ,o.order_status ,o.application_id, u.user_name ,a.chname, o.created_time,
+  	o.deploy_time,o.deploy_type,a.allowdownload,a.base_app
+  	FROM 
+  	portal_application_order o, portal_user u, portal_application a
+  	<where>
+  	a.provider_id = u.user_id AND o.application_id = a.application_id 
+  	<if test="orderStatus != null and orderStatus !=''">
+    AND o.order_status = #{orderStatus}
+  	</if>	
+  	<if test="orderStartTime != null">
+  	AND o.created_time &gt;= #{orderStartTime}
+  	</if>
+  	<if test="orderEndTime != null">
+  	AND o.created_time &lt;= #{orderEndTime}
+  	</if>
+  	AND o.buyer_id = #{userId}
+  	</where>
+  	ORDER BY o.created_time DESC
+  </select>
+  
+    <select id="getAppByBuyer" parameterType="map" resultMap="ApplicationOrderResultMap">
+  	SELECT 
+  	o.order_id, o.order_number ,o.order_status ,o.application_id, u.user_name ,a.chname, o.created_time,
+  	o.deploy_time,o.deploy_type,a.allowdownload,a.base_app
+  	FROM 
+  	portal_application_order o, portal_user u, portal_application a
+  	<where>
+  	a.provider_id = u.user_id AND o.application_id = a.application_id 
+  	<if test="orderStatus != null and orderStatus !=''">
+    AND o.order_status = #{orderStatus}
+  	</if>	
+  	<if test="orderTime != null">
+  	AND o.created_time &gt;= #{orderTime}
+  	</if>
+  	<if test="orderTime != null">
+  	AND o.end_time  &lt;= #{orderTime}
+  	</if>
+  	<if test="applicationId != null">
+  	AND a.application_id = #{applicationId}
+  	</if>
+  	AND o.buyer_id = #{userId}
+  	</where>
+  	ORDER BY o.created_time DESC
+  </select>
+  
+  <select id="getBuyApplicationOrderInfo" parameterType="map" resultMap="ApplicationOrderResultMap">
+  	SELECT
+  	<include refid="Base_Column_List"/>,u.user_name,a.chname
+  	FROM 
+  	portal_application_order o, portal_user u, portal_application a
+  	WHERE
+  	o.buyer_id = u.user_id AND o.application_id = a.application_id AND o.buyer_id =#{userId} AND o.order_number= #{orderNumber}
+  </select>
+  
+  <select id="getSaleApplicationOrderInfo" parameterType="map" resultMap="ApplicationOrderResultMap">
+  	SELECT
+  	<include refid="Base_Column_List"/>,u.user_name,a.chname
+  	FROM 
+  	portal_application_order o, portal_user u, portal_application a
+  	WHERE
+  	o.provider_id = u.user_id AND o.application_id = a.application_id AND o.provider_id =#{userId} AND o.order_number= #{orderNumber}
+  </select>
+  
+  <select id="countApplicationSaleOrder" parameterType="map" resultType="java.lang.Integer">
+  	 SELECT COUNT(o.order_id)
+  	 FROM	
+     portal_application_order o, portal_user u, portal_application a
+     <where>
+	 o.provider_id = u.user_id AND o.provider_id = a.provider_id AND o.application_id = a.application_id 
+  	<if test="orderStatus != null and orderStatus !='' ">
+    AND o.order_status = #{orderStatus}
+  	</if>
+     <if test="orderStartTime != null">
+  	 AND o.created_time &gt;= #{orderStartTime}
+  	 </if>
+  	 <if test="orderEndTime != null">
+  	 AND o.created_time &lt;= #{orderEndTime}
+   	 </if>
+     AND o.provider_id= #{userId}
+     </where>
+     ORDER BY o.created_time DESC
+  </select>
+  
+  <select id="countApplicationBuyOrder" parameterType="map" resultType="java.lang.Integer">
+  	 SELECT COUNT(o.order_id)
+  	 FROM 
+  	 portal_application_order o, portal_user u, portal_application a
+  	 <where>
+  	 o.buyer_id = u.user_id AND o.application_id = a.application_id 
+     <if test="orderStatus != null and orderStatus !=''">
+     AND o.order_status = #{orderStatus}
+     </if>	
+  	 <if test="orderStartTime != null">
+  	 AND o.created_time &gt;= #{orderStartTime}
+  	 </if>
+  	 <if test="orderEndTime != null">
+  	 AND o.created_time &lt;= #{orderEndTime}
+   	 </if>
+  	 AND o.buyer_id = #{userId}
+  	 </where>
+  	 ORDER BY o.created_time DESC
+  </select>
+  
+  <select id="getApplicationOrderInfo" parameterType="java.lang.String" resultMap="ApplicationOrderResultMap">
+  	SELECT
+  	o.maintenance_costs,a.chname
+  	FROM 
+  	portal_application_order o, portal_application a
+  	WHERE
+  	 o.application_id = a.application_id AND o.order_id= #{orderId}
+  </select>
+  
+  <select id="countApplicationPublish" parameterType="map" resultType="java.lang.Integer">
+  	SELECT COUNT(order_id)
+  	FROM portal_application_order
+  	WHERE
+    order_status &lt;&gt; 4 AND mark_delete=0 AND application_id=#{applicationId}
+  </select>
+
+  <update id="batchUpdateOrderStatus" parameterType="map">
+	   UPDATE portal_application_order
+	   SET order_status = #{orderStatus},
+	       accounting_tag = 0
+	   WHERE order_id IN
+	    <foreach item="applicationOrderId" collection="applicationOrderIdList" open="(" separator="," close=")"> 
+	    	#{applicationOrderId}
+	    </foreach>
+   </update>
+   
+   <update id="batchUpdateAccountingTag" parameterType="map">
+       UPDATE portal_service_order
+	   SET accounting_tag = #{accountingTag}
+	   WHERE order_id IN
+	    <foreach item="serviceOrderId" collection="applicationOrderIdList" open="(" separator="," close=")"> 
+	    	#{serviceOrderId}
+	    </foreach>
+   </update>
+</mapper>

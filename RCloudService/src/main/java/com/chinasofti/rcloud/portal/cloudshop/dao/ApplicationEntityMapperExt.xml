@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chinasofti.rcloud.portal.cloudshop.dao.ApplicationMapperExt" >
+  <resultMap id="ApplicationResultMap" type="ApplicationEntityExt" 
+  		extends="com.chinasofti.rcloud.dao.ApplicationEntityMapper.BaseResultMap">
+    <association property="publisher" column="provider_id" javaType="UserEntity">
+        <id column="user_id" property="userId" jdbcType="VARCHAR" />
+	    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+	    <result column="user_email" property="userEmail" jdbcType="VARCHAR" />
+    </association>
+  </resultMap>
+  
+  <resultMap  id="ApplicationBlobResultMap" type="com.chinasofti.rcloud.portal.cloudshop.domain.ApplicationEntityBlobExt" >
+  	<id column="application_id" property="applicationId" jdbcType="VARCHAR" />
+  	<result column="application_name" property="applicationName" jdbcType="VARCHAR" />
+  	<result column="logo_path" property="logoPath" jdbcType="VARCHAR" />
+  	<result column="brief_description" property="briefDescription" jdbcType="LONGVARCHAR" />
+  	<result column="maintenance_costs" property="maintenanceCosts" jdbcType="LONGVARCHAR" />
+  	<result column="sub_domain" property="subDomain" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+    _application.application_id, _application.application_name, _application.created_time, _application.shelve_time, _application.logo_path, _application.status, _application.provider_id, 
+    _application.mark_delete, _application.maintenance_costs, _application.sub_domain, _application.application_type, _application.base_app, _application.app_version
+  </sql>
+  
+  <select id="selectApplicationById" resultMap="ApplicationResultMap" parameterType="java.lang.String">
+	  SELECT
+	  	<include refid="Base_Column_List"/>, _user.user_id, _user.user_name, _user.user_email
+	  FROM portal_application as _application
+	  JOIN portal_user as _user on _application.provider_id = _user.user_id
+	  WHERE _application.mark_delete = 0
+	  AND _application.application_id = #{appId}
+  </select>
+  
+  <select id="searchApplicationByPage" parameterType="map" resultMap="ApplicationResultMap">
+  	  SELECT
+	  	<include refid="Base_Column_List"/>, _user.user_id, _user.user_name, _user.user_email
+	  FROM portal_application as _application
+	  JOIN portal_user as _user on _application.provider_id = _user.user_id
+	  WHERE _application.mark_delete = 0
+	  ORDER BY _application.created_time DESC
+  </select>
+  
+  <select id="countApplication" parameterType="map" resultType="java.lang.Integer">
+  	  SELECT COUNT(application_id)
+  	  FROM portal_application
+  	  WHERE mark_delete = 0
+  </select>
+  
+   <select id="selectApplicationPublishByPage" parameterType="map" resultMap="ApplicationResultMap">
+   		SELECT
+   		application_id, application_name, created_time, chname, status,shelve_time
+   		FROM portal_application
+   		WHERE provider_id=#{userId} AND mark_delete = 0 
+   		ORDER BY shelve_time DESC
+   </select>
+   
+    <select id="countApplicationPublish" parameterType="map" resultType="java.lang.Integer">
+   		SELECT COUNT(application_id)
+   		FROM portal_application
+   		WHERE provider_id=#{userId} AND mark_delete = 0 
+   </select>
+   
+   <select id="selectApplicationbytypeByPage" parameterType="map" resultMap="ApplicationBlobResultMap">
+   		SELECT
+   		application_id,chname,brief_description,logo_path,maintenance_costs,sub_domain
+   		FROM portal_application
+   		WHERE application_type = #{applicationType} AND mark_delete = 0 and status = 1
+   		ORDER BY application_id
+   </select>
+   <select id="countApplicationbytype" parameterType="map" resultType="java.lang.Integer">
+   		SELECT COUNT(application_id)
+   		FROM portal_application
+   		WHERE application_type = #{applicationType} AND mark_delete = 0 and status = 1
+   		ORDER BY application_id
+   </select>
+</mapper>

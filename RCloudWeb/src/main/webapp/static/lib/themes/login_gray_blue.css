@@ -1,0 +1,29 @@
+@charset "utf-8";
+/* CSS Document */
+.login_backcolor{background:#fff;}
+.login_warp{width:930px;margin:0 auto;}
+.login_left{width:500px;min-height:666px;background:#32578b;position:relative;}
+.login_left div{position:absolute;right:0;top:100px;}
+.login_right{position:relative;padding:122px 0 0 92px;width:330px;}
+.login_help{position:fixed;right:17px;top:20px;}
+.login_help a{display:inline-block;background:url(icons/login_gray_blue_help.png) 0 0 no-repeat;width:30px;height:30px;}
+.login_title{padding-bottom:80px;background:url(icons/login_gray_blue_r1.png) 0 0 no-repeat;width:252px;height:92px;}
+.login_inform li{margin-bottom:20px;}
+.login_inform input{font-size:18px;padding-left:14px;width:304px;height:42px;line-height:42px\9;border:1px solid #cfcfcf;}
+.login_inform input.on{border:1px solid #32578b;}
+.login_inform li.yzm input{width:146px;margin-right:18px;}
+.login_inform li.yzm img{vertical-align:bottom;}
+.login_inform li.login_btn input{border:none;cursor:pointer;width:324px;background:#32578b;color:#fff;font-size:24px;}
+.login_inform li.login_btn input:hover{background:#369;}
+
+
+
+
+
+
+
+
+
+
+
+

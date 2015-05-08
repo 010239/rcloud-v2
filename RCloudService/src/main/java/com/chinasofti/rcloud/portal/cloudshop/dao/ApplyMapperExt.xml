@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chinasofti.rcloud.portal.cloudshop.dao.ApplyMapperExt" >
+ <resultMap id="ApplyResultMap" type="com.chinasofti.rcloud.domain.ApplyEntity" 
+  		extends="com.chinasofti.rcloud.dao.ApplyEntityMapper.BaseResultMap">
+  </resultMap>
+ 
+ <sql id="Base_Column_List">
+  	a.apply_id, a.apply_type, a.apply_explanation, a.audit_explanation, a.application_id, 
+  	a.apply_user, a.apply_time, a.audit_user, a.audit_time, a.status
+  </sql>
+  
+ <select id="getApplyListByAppId" parameterType="map"  resultMap="ApplyResultMap">
+ 	SELECT
+ 	<include refid="Base_Column_List"/>
+ 	FROM
+ 	boss_apply a
+ 	WHERE a.apply_type in(01,02)  and a.application_id=#{application_id} and apply_user=#{userId} order by a.apply_time desc limit 0,1
+ </select> 
+  
+
+  
+  
+</mapper>

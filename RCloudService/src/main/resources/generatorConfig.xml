@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration  
+      PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"  
+      "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <classPathEntry location="./lib/mysql-connector-java-5.1.27.jar"/>
+    <context id="MysqlTables" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />  
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"  
+            connectionURL="jdbc:mysql://115.29.3.176:3306/rcloud?useUnicode=true&amp;characterEncoding=UTF-8&amp;zeroDateTimeBehavior=convertToNull"
+            userId="rcloud_new"  
+            password="newrcloud20140626!">
+        </jdbcConnection>  
+  
+        <javaTypeResolver >  
+            <property name="forceBigDecimals" value="false" />  
+        </javaTypeResolver>  
+  
+        <!-- generate Model -->  
+        <javaModelGenerator targetPackage="com.chinasofti.rcloud.domain" targetProject=".\RCloudService\src\main\java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>  
+          
+        <!-- generate xml -->  
+        <sqlMapGenerator targetPackage="com.chinasofti.rcloud.dao"  targetProject=".\RCloudService\src\main\java">
+            <property name="enableSubPackages" value="true" />  
+        </sqlMapGenerator>  
+          
+        <!-- generate Mapper -->  
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.chinasofti.rcloud.dao"  targetProject=".\RCloudService\src\main\java">
+            <property name="enableSubPackages" value="true" />  
+            <property name="rootInterface" value="com.chinasofti.rcloud.common.dao.BaseDao" />
+        </javaClientGenerator>  
+
+        <table tableName="portal_application" domainObjectName="ApplicationEntity"></table>
+        <table tableName="portal_user" domainObjectName="UserEntity"></table>
+        <table tableName="portal_access_key_record" domainObjectName="AccessKeyRecordEntity"></table>
+        <table tableName="portal_application_bill" domainObjectName="ApplicationBillEntity"></table>
+        <table tableName="portal_application_order" domainObjectName="ApplicationOrderEntity"></table>
+        <table tableName="portal_application_order_to_bill" domainObjectName="ApplicationOrderToBillEntity"></table>
+        <table tableName="portal_permission" domainObjectName="PermissionEntity"></table>
+        <table tableName="portal_permission_to_role" domainObjectName="PermissionToRoleEntity"></table>
+        <table tableName="portal_role" domainObjectName="RoleEntity"></table>
+        <table tableName="portal_space" domainObjectName="SpaceEntity"></table>
+        <table tableName="portal_space_to_user" domainObjectName="SpaceToUserEntity"></table>
+        <table tableName="portal_transaction_record" domainObjectName="TransactionRecordEntity"></table>
+        <table tableName="portal_user_account" domainObjectName="UserAccountEntity"></table>
+        <table tableName="boss_organization" domainObjectName="OrganizationEntity"></table>
+        <table tableName="boss_service" domainObjectName="ServiceEntity"></table>
+        <table tableName="boss_apply" domainObjectName="ApplyEntity"></table>
+		<table tableName="boss_service_rportal" domainObjectName="ServiceRportalEntity"></table>
+        <table tableName="boss_accounting_cycle_record" domainObjectName="AccountingCycleRecordEntity"></table>
+        <table tableName="boss_application_type" domainObjectName="ApplicationTypeEntity"></table>
+        <table tableName="portal_permission" domainObjectName="PermissionEntity"></table>
+        <table tableName="portal_role" domainObjectName="RoleEntity"></table>
+        <table tableName="portal_permission_to_role" domainObjectName="PermissionToRoleEntity"></table>
+        <table tableName="boss_pkg" domainObjectName="PkgEntity"></table>
+        <table tableName="boss_products" domainObjectName="ProductsEntity"></table>
+        <table tableName="portal_business_order" domainObjectName="BusinessOrderEntity"></table>
+        <table tableName="boss_service_bill" domainObjectName="BossServiceBillEntity"></table>
+		<table tableName="boss_rates" domainObjectName="RatesEntity"></table>
+		<table tableName="boss_pkg_detail" domainObjectName="PkgDetailEntity"></table>
+		<table tableName="boss_pkg_instance" domainObjectName="PkgInstanceEntity"></table>
+		<table tableName="boss_curve_segments" domainObjectName="CurveSegmentsEntity"></table>
+		<table tableName="boss_billing_month" domainObjectName="BillingMonthEntity"></table>
+		<table tableName="boss_billing_month_detail" domainObjectName="BillingMonthDetailEntity"></table>
+		<table tableName="boss_debts_record" domainObjectName="BossDebtsRecordEntity"></table>
+		<table tableName="boss_audit_log" domainObjectName="AuditLogEntity"></table>
+		
+		<!-- 与应用相关，暂时保留 -->
+		<table tableName="portal_debts_record" domainObjectName="DebtsRecordEntity"></table>
+		
+    </context>
+
+</generatorConfiguration>

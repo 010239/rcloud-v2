@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinasofti.rcloud.portal.userbill.dao.ApplicationBillEntityMapperExt">
+	<resultMap id="ApplicationBillResultMap" type="ApplicationBillEntityExt" extends="com.chinasofti.rcloud.dao.ApplicationBillEntityMapper.BaseResultMap">
+		<association property="debtsRecord" column="bill_id" javaType="DebtsRecordEntity">
+			<id column="bill_id" property="billId" jdbcType="VARCHAR" />
+			<result column="type" property="type" jdbcType="INTEGER" />
+    	</association>
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+	b.bill_id, b.bill_number, b.application_names, b.created_time, b.bill_costs, b.start_time, b.end_time,
+	b.user_id, b.bill_type, b.mark_delete,b.mark_owed
+	</sql>
+	
+	<select id="getApplicationBillListByPage" parameterType="map" resultMap="ApplicationBillResultMap">
+		SELECT 
+	  		<include refid="Base_Column_List"/>
+	  	FROM	
+	  	portal_application_bill b
+	  	<where>
+		  	b.user_id = #{userId}
+		  	<if test="billType != null">
+		    	AND b.bill_type = #{billType}
+		  	</if>
+		  	<if test="billStartTime != null">
+		  		AND b.created_time &gt;= #{billStartTime}
+		  	</if>
+		  	<if test="billEndTime != null">
+		  		AND b.created_time &lt;= #{billEndTime}
+		  	</if>
+	  	</where>
+	  	ORDER BY b.created_time DESC
+	</select>
+	
+	<select id="countApplicationBill" parameterType="map" resultType="java.lang.Integer">
+		SELECT 
+			COUNT(b.bill_id)
+	 	FROM 
+	 		portal_application_bill b
+	 	<where>
+	 		b.user_id = #{userId}
+	 		<if test="billType != null">
+	  			AND b.bill_type = #{billType}
+	 		</if>
+	 		<if test="billStartTime != null">
+				AND b.created_time &gt;= #{billStartTime}
+			</if>
+			<if test="billEndTime != null">
+				AND b.created_time &lt;= #{billEndTime}
+	 		</if>
+	 	</where>
+	 	ORDER BY b.created_time DESC
+    </select>
+    
+    <select id="getApplicationDebtsRecordListByPage" parameterType="map" resultMap="ApplicationBillResultMap">
+    	SELECT 
+    		<include refid="Base_Column_List"/> ,d.type
+    	FROM 
+    		portal_application_bill b ,portal_debts_record d
+    	WHERE
+    		b.user_id =#{userId} 
+    		AND b.mark_owed is not null 
+    		AND d.type=2
+    	ORDER BY b.created_time DESC
+    </select>
+    
+	<select id="countApplicationDebtsRecord" parameterType="map" resultType="java.lang.Integer">
+	 SELECT 
+	 	COUNT(b.bill_id)
+	 	 FROM 
+	 	portal_application_bill b,portal_debts_record d
+	    WHERE
+	    	b.user_id =#{userId} 
+	    	AND b.mark_owed is not null 
+	    	AND d.type=2	
+	    ORDER BY b.created_time DESC 
+	</select>
+</mapper>

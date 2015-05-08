@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chinasofti.rcloud.portal.userconsole.dao.TransactionRecordEntityMapperExt" >
+  <resultMap id="TransactionRecordResultMap" 
+  	type="com.chinasofti.rcloud.portal.userconsole.domain.TransactionRecordEntityExt" >
+    <id column="record_id" property="recordId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="account_balance" property="accountBalance" jdbcType="DECIMAL" />
+    <result column="transaction_type" property="transactionType" jdbcType="INTEGER" />
+    <result column="money_flow" property="moneyFlow" jdbcType="INTEGER" />
+    <result column="transaction_time" property="transactionTime" jdbcType="TIMESTAMP" />
+    <result column="transaction_amount" property="transactionAmount" jdbcType="DECIMAL" />
+    <result column="mark_delete" property="markDelete" jdbcType="INTEGER" />
+    <result column="account_id" property="accountId" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <select id="findListByPage" parameterType="map" resultMap="TransactionRecordResultMap">
+  	select *
+  	from 
+  		portal_transaction_record
+  	where 
+  		mark_delete = 0
+  		<if test="userId != null">
+  			and user_id = #{userId}
+  		</if>
+  		<if test="transactionType != null and transactionType != ''">
+  			and transaction_type = #{transactionType}
+  		</if>
+  		<if test="moneyFlow != null and moneyFlow!=''">
+  			and money_flow = #{moneyFlow}
+  		</if>
+  		<if test="beginTime != null and beginTime!=''">
+  			AND transaction_time &gt;= #{beginTime}
+  		</if>
+  		<if test="endTime != null and endTime!=''">
+  			AND transaction_time &lt; #{endTime}
+  		</if>
+  		
+  		order by transaction_time desc
+  </select>
+  
+  <select id="countFindList" parameterType="map" resultType="java.lang.Integer">
+  	select count(*)  
+  	from 
+  		portal_transaction_record
+  	where 
+  		mark_delete = 0
+  		<if test="userId != null">
+  			and user_id = #{userId}
+  		</if>
+  		<if test="transactionType != null and transactionType != ''">
+  			and transaction_type = #{transactionType}
+  		</if>
+  		<if test="moneyFlow != null and moneyFlow!=''">
+  			and money_flow = #{moneyFlow}
+  		</if>
+  		<if test="beginTime != null and beginTime!=''">
+  			AND transaction_time &gt;= #{beginTime}
+  		</if>
+  		<if test="endTime != null and endTime!=''">
+  			AND transaction_time &lt; #{endTime}
+  		</if>
+  		
+  		order by transaction_time desc
+  </select>
+  
+</mapper>

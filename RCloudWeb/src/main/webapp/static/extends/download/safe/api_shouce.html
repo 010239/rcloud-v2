@@ -1,0 +1,2397 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"
+xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 12">
+<meta name=Originator content="Microsoft Word 12">
+<link rel=File-List href="api/filelist.xml">
+<title>R1 Cloud基于R1认证鉴权的SSO集成和API调用</title>
+<link rel=dataStoreItem href="api/item0001.xml"
+target="api/props0002.xml">
+<link rel=themeData href="api/themedata.thmx">
+<link rel=colorSchemeMapping
+href="api/colorschememapping.xml">
+<style>
+<!--
+ /* Font Definitions */
+ body{background-color: #F3F3F3;}
+ @font-face
+	{font-family:宋体;
+	panose-1:2 1 6 0 3 1 1 1 1 1;
+	mso-font-alt:SimSun;
+	mso-font-charset:134;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:3 680460288 22 0 262145 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-536870145 1107305727 0 0 415 0;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-536870145 1073786111 1 0 415 0;}
+@font-face
+	{font-family:inherit;
+	mso-font-alt:"Times New Roman";
+	mso-font-charset:0;
+	mso-generic-font-family:auto;
+	mso-font-pitch:auto;
+	mso-font-signature:0 0 0 0 262145 0;}
+@font-face
+	{font-family:Consolas;
+	panose-1:2 11 6 9 2 2 4 3 2 4;
+	mso-font-alt:"Microsoft Sans Serif";
+	mso-font-charset:0;
+	mso-generic-font-family:modern;
+	mso-font-pitch:fixed;
+	mso-font-signature:-520092929 1073806591 9 0 415 0;}
+@font-face
+	{font-family:"\@宋体";
+	panose-1:2 1 6 0 3 1 1 1 1 1;
+	mso-font-charset:134;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:3 680460288 22 0 262145 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	mso-pagination:none;
+	font-size:10.5pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:宋体;
+	mso-bidi-font-family:"Times New Roman";
+	mso-font-kerning:1.0pt;}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{mso-style-priority:99;
+	mso-style-link:"页眉 Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:none;
+	tab-stops:center 207.65pt right 415.3pt;
+	layout-grid-mode:char;
+	border:none;
+	mso-border-bottom-alt:solid windowtext .75pt;
+	padding:0cm;
+	mso-padding-alt:0cm 0cm 1.0pt 0cm;
+	font-size:9.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:宋体;
+	mso-bidi-font-family:"Times New Roman";
+	mso-font-kerning:1.0pt;}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{mso-style-priority:99;
+	mso-style-link:"页脚 Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:none;
+	tab-stops:center 207.65pt right 415.3pt;
+	layout-grid-mode:char;
+	font-size:9.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:宋体;
+	mso-bidi-font-family:"Times New Roman";
+	mso-font-kerning:1.0pt;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-noshow:yes;
+	color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p.ICSS, li.ICSS, div.ICSS
+	{mso-style-name:ICSS正文;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"ICSS正文 Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:10.0pt;
+	mso-char-indent-count:2.0;
+	line-height:150%;
+	mso-pagination:none;
+	font-size:10.5pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:宋体;
+	mso-bidi-font-family:"Times New Roman";
+	mso-font-kerning:1.0pt;}
+p.1, li.1, div.1
+	{mso-style-name:列出段落1;
+	mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:21.0pt;
+	mso-char-indent-count:2.0;
+	mso-pagination:none;
+	font-size:10.5pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:宋体;
+	mso-bidi-font-family:"Times New Roman";
+	mso-font-kerning:1.0pt;}
+span.Char
+	{mso-style-name:"页眉 Char";
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:页眉;
+	mso-ansi-font-size:9.0pt;
+	mso-bidi-font-size:9.0pt;}
+span.Char0
+	{mso-style-name:"页脚 Char";
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:页脚;
+	mso-ansi-font-size:9.0pt;
+	mso-bidi-font-size:9.0pt;}
+span.ICSSChar
+	{mso-style-name:"ICSS正文 Char";
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:ICSS正文;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	mso-fareast-font-family:宋体;}
+ /* Page Definitions */
+ @page
+	{mso-page-border-surround-header:no;
+	mso-page-border-surround-footer:no;
+	mso-footnote-separator:url("api/header.htm") fs;
+	mso-footnote-continuation-separator:url("api/header.htm") fcs;
+	mso-endnote-separator:url("api/header.htm") es;
+	mso-endnote-continuation-separator:url("api/header.htm") ecs;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;
+	mso-header-margin:42.55pt;
+	mso-footer-margin:49.6pt;
+	mso-paper-source:0;
+	layout-grid:15.6pt;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:90245543;
+	mso-list-template-ids:90245543;}
+@list l0:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:45.0pt;
+	text-indent:-21.0pt;}
+@list l1
+	{mso-list-id:130557428;
+	mso-list-template-ids:130557428;}
+@list l1:level1
+	{mso-level-start-at:2;
+	mso-level-text:%1、;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;}
+@list l2
+	{mso-list-id:529608192;
+	mso-list-template-ids:529608192;}
+@list l2:level1
+	{mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:45.0pt;
+	text-indent:-21.0pt;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:普通表格;
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="3074" fillcolor="#9cbee0"
+  strokecolor="#739cc3">
+  <v:fill color="#9cbee0" color2="#bbd5f0" type="gradient">
+   <o:fill v:ext="view" type="gradientUnscaled"/>
+  </v:fill>
+  <v:stroke color="#739cc3" weight="1.25pt" miterlimit="2"/>
+ </o:shapedefaults></xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=ZH-CN vlink=purple style='tab-interval:21.0pt;text-justify-trim:
+punctuation'>
+<div style="width:1200px;margin:0 auto; height:auto;background:#FFF; overflow:hidden;" class="box_shouce">
+<div class=Section1 style='layout-grid:15.6pt'>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:30.0pt;
+mso-pagination:widow-orphan;mso-outline-level:1'><b><span lang=EN-US
+style='font-size:26.0pt;mso-bidi-font-size:29.0pt;font-family:inherit;
+mso-bidi-font-family:宋体;mso-font-kerning:18.0pt'>R1 Cloud</span></b><b><span
+style='font-size:26.0pt;mso-bidi-font-size:29.0pt;font-family:宋体;mso-ascii-font-family:
+inherit;mso-hansi-font-family:inherit;mso-bidi-font-family:宋体;mso-font-kerning:
+18.0pt'>基于</span></b><b><span lang=EN-US style='font-size:26.0pt;mso-bidi-font-size:
+29.0pt;font-family:inherit;mso-bidi-font-family:宋体;mso-font-kerning:18.0pt'>R1</span></b><b><span
+style='font-size:26.0pt;mso-bidi-font-size:29.0pt;font-family:宋体;mso-ascii-font-family:
+inherit;mso-hansi-font-family:inherit;mso-bidi-font-family:宋体;mso-font-kerning:
+18.0pt'>认证鉴权的</span></b><b><span lang=EN-US style='font-size:26.0pt;mso-bidi-font-size:
+29.0pt;font-family:inherit;mso-bidi-font-family:宋体;mso-font-kerning:18.0pt'>SSO</span></b><b><span
+style='font-size:26.0pt;mso-bidi-font-size:29.0pt;font-family:宋体;mso-ascii-font-family:
+inherit;mso-hansi-font-family:inherit;mso-bidi-font-family:宋体;mso-font-kerning:
+18.0pt'>集成和</span></b><b><span lang=EN-US style='font-size:26.0pt;mso-bidi-font-size:
+29.0pt;font-family:inherit;mso-bidi-font-family:宋体;mso-font-kerning:18.0pt'>API</span></b><b><span
+style='font-size:26.0pt;mso-bidi-font-size:29.0pt;font-family:宋体;mso-ascii-font-family:
+inherit;mso-hansi-font-family:inherit;mso-bidi-font-family:宋体;mso-font-kerning:
+18.0pt'>调用</span></b><b><span lang=EN-US style='font-size:26.0pt;mso-bidi-font-size:
+29.0pt;font-family:inherit;mso-bidi-font-family:宋体;mso-font-kerning:18.0pt'><o:p></o:p></span></b></p>
+
+<p class=ICSS style='text-indent:21.0pt'><span lang=EN-US>R1</span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri'>云认证鉴权及单点登录平台采用标准的</span><span
+lang=EN-US>OAuth2</span><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri'>，因此可以采用开源的</span><span lang=EN-US>OAuth2</span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri'>客户端</span><span
+lang=EN-US>(</span><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri'>请参考</span><span lang=EN-US><a
+href="http://oauth.net/2/" target="_blank"><span style='color:#0088CC'>OAuth2</span><span
+lang=EN-US style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:
+Calibri;color:#0088CC'><span lang=EN-US>官方</span></span></a>)</span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri'>获取访问令牌后调用获取用户信息的接口</span><span
+lang=EN-US>(/api/user)</span><span style='font-family:宋体;mso-ascii-font-family:
+Calibri;mso-hansi-font-family:Calibri'>来获取当前用户</span></p>
+
+<p class=ICSS style='text-indent:21.0pt'><span style='font-family:宋体;
+mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri'>平台也提供了辅助类封装上面说的过程来简化客户的调用，配置和使用过程如下：</span></p>
+
+<p class=ICSS style='text-indent:21.0pt'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<p class=ICSS style='text-indent:21.0pt'><span lang=EN-US>1</span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri'>、在客户端应用的</span><span
+lang=EN-US>web.xml</span><span style='font-family:宋体;mso-ascii-font-family:
+Calibri;mso-hansi-font-family:Calibri'>中注册</span><span lang=EN-US>com.icss.as.oauth2.client.sso.SSOFilter,</span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri'>对需要获取到当前用户的</span><span
+lang=EN-US>url</span><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri'>进行拦截，注意</span><span lang=EN-US>:filter-mapping</span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri'>的拦截要在转码</span><span
+lang=EN-US>Filter</span><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri'>的后面，其他</span><span lang=EN-US>Filter</span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri'>的前面，例如：</span></p>
+
+<p class=MsoNormal align=left style='margin-top:0cm;margin-right:0cm;
+margin-bottom:7.5pt;margin-left:18.75pt;text-align:left;line-height:15.0pt;
+mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&lt;filter&gt;<br>
+<span style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp; </span>&lt;filter-name&gt;SSOFilter&lt;/filter-name&gt;<br>
+<span style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp; </span>&lt;filter-class&gt;com.icss.as.oauth2.client.sso.SSOFilter&lt;/filter-class&gt;<br>
+&lt;/filter&gt;<br>
+&lt;filter-mapping&gt;<br>
+<span style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp; </span>&lt;filter-name&gt;SSOFilter&lt;/filter-name&gt;<br>
+<span style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp; </span>&lt;url-pattern&gt;*.do&lt;/url-pattern&gt;<br>
+&lt;/filter-mapping&gt;</span><span lang=EN-US style='font-size:10.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=1 align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+auto;margin-left:18.0pt;text-align:left;text-indent:-18.0pt;mso-char-indent-count:
+0;line-height:15.0pt;mso-pagination:widow-orphan;mso-list:l1 level1 lfo1'><![if !supportLists]><span
+lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+mso-font-kerning:0pt'><span style='mso-list:Ignore'>2、<span style='font:7.0pt "Times New Roman"'>
+</span></span></span><![endif]><span style='font-size:12.0pt;font-family:宋体;
+mso-bidi-font-family:宋体;mso-font-kerning:0pt'>编辑<span lang=EN-US>WEB-INF/class/OAuth2-config.properties</span>文件<span
+lang=EN-US>(</span>或通过增加<span lang=EN-US>Filter</span>参数<span lang=EN-US>configFileName</span>指定配置文件名称<span
+lang=EN-US>),</span>内容如下：<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>#</span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>应用</span><span lang=EN-US style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'>ID<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>client_id=TEST-APP<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>#</span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>应用凭证</span><span lang=EN-US style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>client_secret=8d42ee5e-d1ab-4d60-abf0-499457a11579<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>#</span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>应用注册的回调地址</span><span lang=EN-US style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>#</span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>其中</span><span lang=EN-US style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'>
+http://localhost:8080/R1AuthricationServer </span><span style='font-size:9.0pt;
+font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>为认证中心的访问地址，请根据实际情况替换</span><span
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'> </span><b><span style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:
+Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;
+color:white;background:#3A87AD;mso-font-kerning:0pt'>注意</span></b><b><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:white;background:
+#3A87AD;mso-font-kerning:0pt'>:</span></b><span style='font-size:9.0pt;
+font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>此地址必须要被</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>SSOFilter</span><span style='font-size:9.0pt;font-family:
+宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:
+Consolas;color:#333333;mso-font-kerning:0pt'>拦截</span><span lang=EN-US
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>redirect_uri=http://localhost:8080/R1AuthricationServer/client.do<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>#</span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>授权请求的</span><span lang=EN-US style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'>URL<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>authorize_url=http://localhost:8080/R1AuthricationServer/oauth2/authorize<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>#</span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>获取令牌的</span><span lang=EN-US style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'>URL<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>access_token_url=http://localhost:8080/R1AuthricationServer/oauth2/access_token<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>#</span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>获取用户信息的</span><span lang=EN-US style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'>API</span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>调用地址</span><span lang=EN-US style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-top:0cm;margin-right:0cm;
+margin-bottom:7.5pt;margin-left:21.0pt;text-align:left;line-height:15.0pt;
+mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>api_url=http://localhost:8080/R1AuthricationServer/api</span><span
+lang=EN-US style='font-size:10.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+auto;margin-left:18.0pt;text-align:left;line-height:15.0pt;mso-pagination:widow-orphan'><span
+lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+mso-font-kerning:0pt'>3</span><span style='font-size:12.0pt;font-family:宋体;
+mso-bidi-font-family:宋体;mso-font-kerning:0pt'>、拷贝依赖的<span lang=EN-US>jar</span>包到应用的<span
+lang=EN-US>WEB-INF/lib</span>目录<span lang=EN-US>(</span>实际的版本可能不同<span
+lang=EN-US>):<o:p></o:p></span></span></p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 width=544
+ style='margin-left:18.0pt;background:#F2F2F2;border-collapse:collapse;
+ mso-table-layout-alt:fixed;border:none;mso-border-alt:solid windowtext .5pt;
+ mso-padding-alt:0cm 5.4pt 0cm 5.4pt;mso-border-insideh:.5pt solid windowtext;
+ mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td width=544 valign=top style='width:408.1pt;border:solid windowtext 1.0pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;margin-left:19.5pt;text-align:left;line-height:15.0pt;mso-pagination:
+  widow-orphan'><span lang=EN-US style='font-size:12.0pt;font-family:宋体;
+  mso-bidi-font-family:宋体;mso-font-kerning:0pt'>r1client.jar<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;margin-left:19.5pt;text-align:left;line-height:15.0pt;mso-pagination:
+  widow-orphan'><span lang=EN-US style='font-size:12.0pt;font-family:宋体;
+  mso-bidi-font-family:宋体;mso-font-kerning:0pt'>bizframework.jar<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;margin-left:19.5pt;text-align:left;line-height:15.0pt;mso-pagination:
+  widow-orphan'><span lang=EN-US style='font-size:12.0pt;font-family:宋体;
+  mso-bidi-font-family:宋体;mso-font-kerning:0pt'>commons-httpclient-3.1.jar<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;margin-left:19.5pt;text-align:left;line-height:15.0pt;mso-pagination:
+  widow-orphan'><span lang=EN-US style='font-size:12.0pt;font-family:宋体;
+  mso-bidi-font-family:宋体;mso-font-kerning:0pt'>commons-codec.jar<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;margin-left:19.5pt;text-align:left;line-height:15.0pt;mso-pagination:
+  widow-orphan'><span lang=EN-US style='font-size:12.0pt;font-family:宋体;
+  mso-bidi-font-family:宋体;mso-font-kerning:0pt'>slf4j-api-1.6.0.jar<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;margin-left:19.5pt;text-align:left;line-height:15.0pt;mso-pagination:
+  widow-orphan'><span lang=EN-US style='font-size:12.0pt;font-family:宋体;
+  mso-bidi-font-family:宋体;mso-font-kerning:0pt'>slf4j-log4j12-1.6.0.jar<o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+auto;margin-left:18.0pt;text-align:left;line-height:15.0pt;mso-pagination:widow-orphan'><span
+lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+mso-font-kerning:0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+auto;margin-left:18.75pt;text-align:left;line-height:15.0pt;mso-pagination:
+widow-orphan'><span lang=EN-US style='font-size:12.0pt;font-family:宋体;
+mso-bidi-font-family:宋体;mso-font-kerning:0pt'>4</span><span style='font-size:
+12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'>、获取当前用户的方式：<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=ICSS style='margin-left:45.0pt;text-indent:-21.0pt;mso-char-indent-count:
+0;mso-list:l2 level1 lfo2'><![if !supportLists]><span lang=EN-US
+style='font-size:12.0pt;line-height:150%;font-family:宋体;mso-bidi-font-family:
+宋体'><span style='mso-list:Ignore'>1)<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span></span><![endif]><span style='font-size:12.0pt;line-height:150%;
+font-family:宋体;mso-bidi-font-family:宋体'>通过<span lang=EN-US>request</span>当前用户<span
+lang=EN-US>id</span>：</span><span lang=EN-US style='border:solid #E1E1E8 1.0pt;
+mso-border-alt:solid #E1E1E8 .75pt;padding:0cm;background:#F7F7F9'>request.getRemoteUser()</span><span
+lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:宋体;mso-bidi-font-family:
+宋体'><o:p></o:p></span></p>
+
+<p class=ICSS style='margin-left:45.0pt;text-indent:-21.0pt;mso-char-indent-count:
+0;mso-list:l2 level1 lfo2'><![if !supportLists]><span lang=EN-US
+style='font-size:12.0pt;line-height:150%;font-family:宋体;mso-bidi-font-family:
+宋体'><span style='mso-list:Ignore'>2)<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span></span><![endif]><span style='font-size:12.0pt;line-height:150%;
+font-family:宋体;mso-bidi-font-family:宋体'>当前用户<span lang=EN-US>id</span>：</span><span
+lang=EN-US style='border:solid #E1E1E8 1.0pt;mso-border-alt:solid #E1E1E8 .75pt;
+padding:0cm;background:#F7F7F9'>SSO.getUserId()</span><span lang=EN-US
+style='font-size:12.0pt;line-height:150%;font-family:宋体;mso-bidi-font-family:
+宋体'>&nbsp;(</span><span style='font-size:12.0pt;line-height:150%;font-family:
+宋体;mso-bidi-font-family:宋体'>需要<span lang=EN-US>import com.icss.as.oauth2.client.sso.SSO)<o:p></o:p></span></span></p>
+
+<p class=ICSS style='margin-left:45.0pt;text-indent:-21.0pt;mso-char-indent-count:
+0;mso-list:l2 level1 lfo2'><![if !supportLists]><span lang=EN-US
+style='font-size:12.0pt;line-height:150%;font-family:宋体;mso-bidi-font-family:
+宋体'><span style='mso-list:Ignore'>3)<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span></span><![endif]><span style='font-size:12.0pt;line-height:150%;
+font-family:宋体;mso-bidi-font-family:宋体'>当前用户<span lang=EN-US>JSONObject</span>对象：</span><span
+lang=EN-US style='border:solid #E1E1E8 1.0pt;mso-border-alt:solid #E1E1E8 .75pt;
+padding:0cm;background:#F7F7F9'>SSO.getUser()</span><span lang=EN-US
+style='font-size:12.0pt;line-height:150%;font-family:宋体;mso-bidi-font-family:
+宋体'>&nbsp;(</span><span style='font-size:12.0pt;line-height:150%;font-family:
+宋体;mso-bidi-font-family:宋体'>需要<span lang=EN-US>import
+com.icss.as.oauth2.client.sso.SSO)</span>，对象的属性参考</span><span lang=EN-US><a
+href="http://localhost:8080/auth/doc/OAuth2#api.user"><span lang=EN-US
+style='font-size:12.0pt;line-height:150%;font-family:宋体;mso-bidi-font-family:
+宋体;color:#0088CC'><span lang=EN-US>获取用户信息</span></span></a></span><span
+lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:宋体;mso-bidi-font-family:
+宋体'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:30.0pt;
+mso-pagination:widow-orphan;mso-outline-level:1'><b><span lang=EN-US
+style='font-size:29.0pt;font-family:inherit;mso-bidi-font-family:宋体;mso-font-kerning:
+18.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:30.0pt;
+mso-pagination:widow-orphan;mso-outline-level:1'><b><span style='font-size:
+29.0pt;font-family:宋体;mso-ascii-font-family:inherit;mso-hansi-font-family:inherit;
+mso-bidi-font-family:宋体;mso-font-kerning:18.0pt'>使用客户端调用</span></b><b><span
+lang=EN-US style='font-size:29.0pt;font-family:inherit;mso-bidi-font-family:
+宋体;mso-font-kerning:18.0pt'>API<o:p></o:p></span></b></p>
+
+<p class=ICSS style='text-indent:21.0pt'><span lang=EN-US>API Client</span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri'>的作用是封装</span><span
+lang=EN-US>OAuth2</span><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri'>协议过程，简化应用调用服务器资源的过程，有如下场景：</span></p>
+
+<p class=ICSS style='text-indent:21.0pt'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<p class=ICSS style='text-indent:21.0pt'><span lang=EN-US>1</span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri'>、以当前用户的身份调用：适用请求由客户</span><span
+lang=EN-US>(</span><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri'>浏览器</span><span lang=EN-US>)</span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri'>发起，引导用户从认证平台登录后，以登录的用户的访问令牌作为服务调用的身份认证信息。</span></p>
+
+<p class=ICSS style='text-indent:21.0pt'><span style='font-family:宋体;
+mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri'>配置和调用步骤：首先按照</span><span
+lang=EN-US><a href="http://localhost:8080/auth/doc/OAuth2#sso"><span
+lang=EN-US style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:
+Calibri;color:#0088CC'><span lang=EN-US>基于</span></span><span style='color:
+#0088CC'>OAuth2</span><span lang=EN-US style='font-family:宋体;mso-ascii-font-family:
+Calibri;mso-hansi-font-family:Calibri;color:#0088CC'><span lang=EN-US>的单点登陆</span></span></a></span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri'>的说明做好配置，例如通过调用</span><span
+lang=EN-US>app</span><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri'>服务查询</span><span lang=EN-US>secret=b0bff92c-e3e3-4ead-9f57-d85af21577ee</span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri'>的应用详情：</span></p>
+
+<p class=MsoNormal align=left style='margin-top:0cm;margin-right:0cm;
+margin-bottom:7.5pt;margin-left:18.75pt;text-align:left;line-height:15.0pt;
+mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><b><span lang=EN-US
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'>SSO</span></b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'>.getAPIClient().parameter(&quot;secret&quot;,
+&quot;b0bff92c-e3e3-4ead-9f57-d85af21577ee&quot;).call(&quot;/app&quot;)</span><span
+lang=EN-US style='font-size:10.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=ICSS style='text-indent:21.0pt'><span style='font-family:宋体;
+mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri'>返回结果为</span><span
+lang=EN-US>JSONObject</span><span style='font-family:宋体;mso-ascii-font-family:
+Calibri;mso-hansi-font-family:Calibri'>对象，查看</span><span lang=EN-US><a
+href="http://localhost:8080/auth/doc/OAuth2#api/app"><span lang=EN-US
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;
+color:#0088CC'><span lang=EN-US>获取应用详细信息</span></span></a></span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri'>说明</span></p>
+
+<p class=ICSS style='text-indent:21.0pt'><span lang=EN-US>2</span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri'>、以指定的用户身份</span><span
+lang=EN-US>(</span><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri'>提供用户名和密码</span><span lang=EN-US>)</span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri'>调用：适用请求不是由客户发起，例如定时任务，程序模拟请求等。</span></p>
+
+<p class=ICSS style='text-indent:21.0pt'><span style='font-family:宋体;
+mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri'>配置和调用步骤：配置</span><span
+lang=EN-US>OAuth2-config.properties</span><span style='font-family:宋体;
+mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri'>文件，与</span><span
+lang=EN-US><a
+href="http://localhost:8080/auth/doc/OAuth2#OAuth2-config-properties"><span
+lang=EN-US style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:
+Calibri;color:#0088CC'><span lang=EN-US>基于</span></span><span style='color:
+#0088CC'>OAuth2</span><span lang=EN-US style='font-family:宋体;mso-ascii-font-family:
+Calibri;mso-hansi-font-family:Calibri;color:#0088CC'><span lang=EN-US>的单点登陆的第二步</span></span></a></span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri'>一致</span><span
+lang=EN-US> (</span><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri'>不需要配置</span><span lang=EN-US>SSOFilter)</span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri'>，例如以</span><span
+lang=EN-US>tester</span><span style='font-family:宋体;mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri'>的身份通过调用</span><span lang=EN-US>app</span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri'>服务查询</span><span
+lang=EN-US>secret=b0bff92c-e3e3-4ead-9f57-d85af21577ee</span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri'>的应用详情：</span></p>
+
+<p class=ICSS style='text-indent:18.05pt'><b><span lang=EN-US style='font-size:
+9.0pt;line-height:150%;font-family:Consolas;color:#333333'>APIClient</span></b><span
+lang=EN-US style='font-size:9.0pt;line-height:150%;font-family:Consolas;
+color:#333333'>.getInstance().setUserName(&quot;tester&quot;).setPassword(&quot;testerPassword&quot;).parameter(&quot;secret&quot;,
+&quot;b0bff92c-e3e3-4ead-9f57-d85af21577ee&quot;).call(&quot;/app&quot;)</span><span
+lang=EN-US style='font-size:10.0pt;line-height:150%;font-family:Consolas;
+color:#333333'><o:p></o:p></span></p>
+
+<p class=ICSS style='text-indent:21.0pt'><span style='font-family:宋体;
+mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri'>返回结果为</span><span
+lang=EN-US>JSONObject</span><span style='font-family:宋体;mso-ascii-font-family:
+Calibri;mso-hansi-font-family:Calibri'>对象，查看</span><span lang=EN-US><a
+href="http://localhost:8080/auth/doc/OAuth2#api/app"><span lang=EN-US
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;
+color:#0088CC'><span lang=EN-US>获取应用详细信息</span></span></a></span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri'>说明</span></p>
+
+<p class=ICSS style='text-indent:21.0pt'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:30.0pt;
+mso-pagination:widow-orphan;mso-outline-level:1'><b><span style='font-size:
+29.0pt;font-family:宋体;mso-ascii-font-family:inherit;mso-hansi-font-family:inherit;
+mso-bidi-font-family:宋体;mso-font-kerning:18.0pt'>已提供的服务列表</span></b><b><span
+lang=EN-US style='font-size:29.0pt;font-family:inherit;mso-bidi-font-family:
+宋体;mso-font-kerning:18.0pt'><o:p></o:p></span></b></p>
+
+<p class=ICSS style='text-indent:21.0pt'><span lang=EN-US>R1</span><span
+style='font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri'>云认证鉴权平台提供的服务列表包括如下文所示，在具体调用时有两种方式：</span></p>
+
+<p class=ICSS align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+auto;margin-left:45.0pt;text-align:left;text-indent:-21.0pt;mso-char-indent-count:
+0;line-height:19.5pt;mso-pagination:widow-orphan;mso-list:l0 level1 lfo3;
+tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:white'><![if !supportLists]><span lang=EN-US style='mso-bidi-font-size:
+12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><span
+style='mso-list:Ignore'>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span></span><![endif]><span style='mso-bidi-font-size:12.0pt;
+font-family:宋体;mso-font-kerning:0pt'>直接通过<span lang=EN-US>OAuth2</span>协议调用<span
+lang=EN-US>,</span>获取到访问令牌后请参考</span><span lang=EN-US><a
+href="http://localhost:8080/auth/doc/OAuth2#using_token"><span lang=EN-US
+style='mso-bidi-font-size:12.0pt;font-family:宋体;color:#0088CC;mso-font-kerning:
+0pt'><span lang=EN-US>使用访问令牌调用API</span></span></a></span><span lang=EN-US
+style='mso-bidi-font-size:12.0pt;font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=ICSS align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+auto;margin-left:45.0pt;text-align:left;text-indent:-21.0pt;mso-char-indent-count:
+0;line-height:19.5pt;mso-pagination:widow-orphan;mso-list:l0 level1 lfo3;
+tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:white'><![if !supportLists]><span lang=EN-US style='mso-bidi-font-size:
+12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><span
+style='mso-list:Ignore'>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span></span><![endif]><span style='mso-bidi-font-size:12.0pt;
+font-family:宋体;mso-font-kerning:0pt'>使用客户端调用，客户端封装了<span lang=EN-US>OAuth2</span>协议的过程，使用更加简单，请参考</span><span
+lang=EN-US><a href="http://localhost:8080/auth/doc/OAuth2#apiclient"><span
+lang=EN-US style='mso-bidi-font-size:12.0pt;font-family:宋体;color:#0088CC;
+mso-font-kerning:0pt'><span lang=EN-US>使用客户端调用API</span></span></a></span><span
+lang=EN-US style='mso-bidi-font-size:12.0pt;font-family:宋体;mso-font-kerning:
+0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-top:7.5pt;margin-right:0cm;
+margin-bottom:7.5pt;margin-left:0cm;text-align:left;line-height:30.0pt;
+mso-pagination:widow-orphan;mso-outline-level:2'><b><span lang=EN-US
+style='font-size:23.5pt;font-family:inherit;mso-bidi-font-family:宋体;mso-font-kerning:
+0pt'>1.5.1.</span></b><b><span style='font-size:23.5pt;font-family:宋体;
+mso-ascii-font-family:inherit;mso-hansi-font-family:inherit;mso-bidi-font-family:
+宋体;mso-font-kerning:0pt'>获取用户信息</span></b><a name=api.user></a><b><span
+lang=EN-US style='font-size:23.5pt;font-family:inherit;mso-bidi-font-family:
+宋体;mso-font-kerning:0pt'><o:p></o:p></span></b></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span style='font-size:10.0pt;
+font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>调用方式：</span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>方案一：</span><span lang=EN-US style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'> APIClient
+client=SSO.getAPIClient();//</span><span style='font-size:9.0pt;font-family:
+宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:
+Consolas;color:#333333;mso-font-kerning:0pt'>集成了</span><span lang=EN-US
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'>SSO<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:
+Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'>方案二：</span><span lang=EN-US
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'> APIClient
+client=APIClient.getInstance().setUserName(&quot;userName&quot;).setPassword(&quot;password&quot;);//</span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>直接指定用户</span><span lang=EN-US style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:
+Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'>获取</span><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>client</span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>对象后，再根据如下代码获取</span><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>json</span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>对象：</span><span lang=EN-US style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>JSONObject resut1 = client.call(&quot;/user&quot;);</span><span
+lang=EN-US style='font-size:10.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=ICSS style='text-indent:21.0pt'><span style='font-family:宋体;
+mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri'>返回结果示例：</span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>{<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&quot;personUuid&quot;
+: &quot;4089e314403d26ae01403d26aee90000&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&quot;userId&quot;
+: &quot;tester&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&quot;fullName&quot;
+: &quot;tester&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&quot;email&quot;
+: &quot;tester@tester.com&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&quot;accountType&quot;
+: &quot;1&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&quot;accountStat&quot;
+: &quot;2&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&quot;certificateId&quot;
+: &quot;&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&quot;loginWay&quot;
+: &quot;&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&quot;cardType&quot;
+: &quot;0&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&quot;idNum&quot;
+: &quot;&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&quot;personCode&quot;
+: &quot;&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&quot;orgName&quot;
+: &quot;&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&quot;gender&quot;
+: &quot;</span><span style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:
+Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'>男</span><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&quot;orderNo&quot;
+: &quot;1&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&quot;telNo&quot;
+: &quot;&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&quot;otherInfo&quot;
+: &quot;&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&quot;createTime&quot;
+: &quot;2013-08-02 11:51:20&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&quot;createUser&quot;
+: &quot;&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&quot;updateTime&quot;
+: &quot;2013-08-20 11:35:35&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&quot;updateUser&quot;
+: &quot;&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&quot;isAdministrator&quot;
+: &quot;false&quot;<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>}</span><span
+lang=EN-US style='font-size:10.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-top:7.5pt;margin-right:0cm;
+margin-bottom:7.5pt;margin-left:0cm;text-align:left;line-height:30.0pt;
+mso-pagination:widow-orphan;mso-outline-level:2'><b><span lang=EN-US
+style='font-size:23.5pt;font-family:inherit;mso-bidi-font-family:宋体;mso-font-kerning:
+0pt'>1.5.2.</span></b><b><span style='font-size:23.5pt;font-family:宋体;
+mso-ascii-font-family:inherit;mso-hansi-font-family:inherit;mso-bidi-font-family:
+宋体;mso-font-kerning:0pt'>获取应用详细信息</span></b><b><span lang=EN-US
+style='font-size:23.5pt;font-family:inherit;mso-bidi-font-family:宋体;mso-font-kerning:
+0pt'><o:p></o:p></span></b></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span style='font-size:10.0pt;
+font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>调用方式：</span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>方案一：</span><span lang=EN-US style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'> APIClient client=SSO.getAPIClient();//</span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>集成了</span><span lang=EN-US style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'>SSO<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:
+Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'>方案二：</span><span lang=EN-US
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'> APIClient
+client=APIClient.getInstance().setUserName(&quot;userName&quot;).setPassword(&quot;password&quot;);//</span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>直接指定用户</span><span lang=EN-US style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:
+Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'>获取</span><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>client</span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>对象后，再根据如下代码获取</span><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>json</span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>对象：</span><span lang=EN-US style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>JSONObject resut2 = client.parameter(&quot;secret&quot;, &quot;b0bff92c-e3e3-4ead-9f57-d85af21577ee&quot;)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>.call(&quot;/app&quot;);</span><span lang=EN-US style='font-size:10.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+mso-pagination:widow-orphan'><span style='font-size:12.0pt;font-family:宋体;
+mso-bidi-font-family:宋体;mso-font-kerning:0pt'>返回结果示例：<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>{<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>&quot;id&quot;
+: &quot;297eff02407662690140766269050000&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>&quot;creationDate&quot;
+: &quot;2013-08-13 14:34:55&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>&quot;appID&quot;
+: &quot;testapp&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>&quot;memo&quot;
+: &quot;1&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>&quot;expireDuration&quot;
+: &quot;604800&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>&quot;appName&quot;
+: &quot;</span><span style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:
+Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'>测试应用</span><span lang=EN-US
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'>&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>&quot;allowedImplicitGrant&quot;
+: &quot;false&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>&quot;allowedClientCredentials&quot;
+: &quot;false&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>&quot;secret&quot;
+: &quot;b0bff92c-e3e3-4ead-9f57-d85af21577ee&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>&quot;skipConsent&quot;
+: &quot;true&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>&quot;includePrincipal&quot;
+: &quot;false&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>&quot;iconURL&quot;
+: &quot;&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>&quot;useRefreshTokens&quot;
+: &quot;false&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>&quot;resourceserverId&quot;
+: &quot;&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>&quot;status&quot;
+: &quot;1&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>&quot;orderNO&quot;
+: &quot;100&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>&quot;clientScope&quot;
+: &quot;&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>&quot;secretTime&quot;
+: &quot;2013-08-20 17:20:41&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>&quot;redirectUris&quot;
+: &quot;&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>&quot;developerId&quot;
+: &quot;000000000000000001&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>&quot;developerName&quot;
+: &quot;</span><span style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:
+Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'>中软国际</span><span lang=EN-US
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'>-</span><span style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:
+Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'>部门一</span><span lang=EN-US
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'>&quot;<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>}</span><span
+lang=EN-US style='font-size:10.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-top:7.5pt;margin-right:0cm;
+margin-bottom:7.5pt;margin-left:0cm;text-align:left;line-height:30.0pt;
+mso-pagination:widow-orphan;mso-outline-level:2'><b><span lang=EN-US
+style='font-size:23.5pt;font-family:inherit;mso-bidi-font-family:宋体;mso-font-kerning:
+0pt'>1.5.3.</span></b><b><span style='font-size:23.5pt;font-family:宋体;
+mso-ascii-font-family:inherit;mso-hansi-font-family:inherit;mso-bidi-font-family:
+宋体;mso-font-kerning:0pt'>注册开发商</span></b><b><span lang=EN-US style='font-size:
+23.5pt;font-family:inherit;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></b></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+mso-pagination:widow-orphan'><span style='font-size:12.0pt;font-family:宋体;
+mso-bidi-font-family:宋体;mso-font-kerning:0pt'>调用示例一<span lang=EN-US> (</span>通过客户端调用<span
+lang=EN-US>,</span>客户端的配置请参考</span><span lang=EN-US><a
+href="http://localhost:8080/auth/doc/OAuth2#apiclient"><span lang=EN-US
+style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;color:#0088CC;
+mso-font-kerning:0pt'><span lang=EN-US>使用客户端调用API</span></span></a></span><span
+style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+0pt'>部分<span lang=EN-US>)<o:p></o:p></span></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-spacerun:yes'>&nbsp; </span>/*<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-spacerun:yes'>&nbsp;&nbsp; </span>* </span><span style='font-size:
+9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>参数说明：</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-spacerun:yes'>&nbsp;&nbsp; </span>* userId</span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>登录帐号（必填）</span><span lang=EN-US style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-spacerun:yes'>&nbsp;&nbsp; </span>* fullName</span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>全名</span><span style='font-size:9.0pt;font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'> </span><span style='font-size:9.0pt;
+font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>（必填）</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-spacerun:yes'>&nbsp;&nbsp; </span>* email </span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>邮箱</span><span style='font-size:9.0pt;font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'> </span><span style='font-size:9.0pt;
+font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>（必填）</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-spacerun:yes'>&nbsp;&nbsp; </span>* personUrl </span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>个人主页（必填）</span><span lang=EN-US style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-spacerun:yes'>&nbsp;&nbsp; </span>* appID<span
+style='mso-spacerun:yes'>&nbsp; </span></span><span style='font-size:9.0pt;
+font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>应用</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>ID</span><span style='font-size:9.0pt;font-family:宋体;
+mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:
+Consolas;color:#333333;mso-font-kerning:0pt'>（必填）</span><span lang=EN-US
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-spacerun:yes'>&nbsp;&nbsp; </span>* appName </span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>应用名称</span><span style='font-size:9.0pt;font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'> </span><span style='font-size:9.0pt;
+font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>（必填）</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-spacerun:yes'>&nbsp;&nbsp; </span>* redirectUris </span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>重定向地址</span><span lang=EN-US style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-spacerun:yes'>&nbsp;&nbsp; </span>*/<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span style='font-size:9.0pt;
+font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>方案一：</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'> APIClient client=SSO.getAPIClient();//</span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>集成了</span><span lang=EN-US style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'>SSO<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span style='font-size:9.0pt;
+font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>方案二：</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'> APIClient
+client=APIClient.getInstance().setUserName(&quot;userName&quot;).setPassword(&quot;password&quot;);//</span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>直接指定用户</span><span lang=EN-US style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span style='font-size:9.0pt;
+font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>获取</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>client</span><span style='font-size:9.0pt;font-family:
+宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:
+Consolas;color:#333333;mso-font-kerning:0pt'>对象后，再根据如下代码获取</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>json</span><span style='font-size:9.0pt;font-family:宋体;
+mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:
+Consolas;color:#333333;mso-font-kerning:0pt'>对象：</span><span lang=EN-US
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>JSONObject
+resut3=client.parameter(&quot;userId&quot;, &quot;icss&quot;)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>.parameter(&quot;email&quot;, &quot;icss@163.com&quot;)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>.parameter(&quot;fullName&quot;, &quot;icss&quot;)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>.parameter(&quot;personUrl&quot;, &quot;http://icss.com.cn&quot;)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>.parameter(&quot;appID&quot;, &quot;OA-CLOUD&quot;)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>.parameter(&quot;appName&quot;, &quot;</span><span style='font-size:
+9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>云办公自动化</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>&quot;)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>.parameter(&quot;redirectUris&quot;, &quot;http://localhost:8080/R1AuthricationServer/client.jsp&quot;)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>.call(&quot;/registerDeveloper&quot;);<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>resut3.optString(&quot;activeURL&quot;);//</span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>获取用户激活的</span><span lang=EN-US style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'>URL</span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>地址</span><span lang=EN-US style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+mso-pagination:widow-orphan'><span lang=EN-US style='font-size:12.0pt;
+font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+mso-pagination:widow-orphan'><span style='font-size:12.0pt;font-family:宋体;
+mso-bidi-font-family:宋体;mso-font-kerning:0pt'>返回结果<span lang=EN-US>(JSON)</span>：<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>{<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&quot;personuuid&quot;
+: &quot;4089e35e427866c00142788d63850005&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&quot;activeURL&quot;
+: &quot;http://localhost:8080/R1AuthricationServer/resetPasswod&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&quot;authorize_url&quot;
+: &quot;http://localhost:8080/oauth2/authorize&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&quot;access_token_url&quot;
+: &quot;http://localhost:8080/oauth2/access_token&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&quot;api_url&quot;
+: &quot;http://localhost:8080/api&quot;,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&quot;client_secret&quot;
+: &quot;29d4daa5-5044-4b43-b4bc-34644da83e26&quot;<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>}</span><span
+lang=EN-US style='font-size:10.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-top:7.5pt;margin-right:0cm;
+margin-bottom:7.5pt;margin-left:0cm;text-align:left;line-height:30.0pt;
+mso-pagination:widow-orphan;mso-outline-level:2'><b><span lang=EN-US
+style='font-size:23.5pt;font-family:inherit;mso-bidi-font-family:宋体;mso-font-kerning:
+0pt'>1.5.4.</span></b><b><span style='font-size:23.5pt;font-family:宋体;
+mso-ascii-font-family:inherit;mso-hansi-font-family:inherit;mso-bidi-font-family:
+宋体;mso-font-kerning:0pt'>创建用户</span></b><b><span lang=EN-US style='font-size:
+23.5pt;font-family:inherit;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></b></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+mso-pagination:widow-orphan'><span style='font-size:12.0pt;font-family:宋体;
+mso-bidi-font-family:宋体;mso-font-kerning:0pt'>调用示例一<span lang=EN-US> (</span>通过客户端调用<span
+lang=EN-US>,</span>客户端的配置请参考</span><span lang=EN-US><a
+href="http://localhost:8080/auth/doc/OAuth2#apiclient"><span lang=EN-US
+style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;color:#0088CC;
+mso-font-kerning:0pt'><span lang=EN-US>使用客户端调用API</span></span></a></span><span
+style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+0pt'>部分<span lang=EN-US>)<o:p></o:p></span></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>/*<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='mso-spacerun:yes'>&nbsp;</span>* </span><span style='font-size:9.0pt;
+font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>参数说明：</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='mso-spacerun:yes'>&nbsp;</span>* userId</span><span style='font-size:
+9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>登录帐号（必填）</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='mso-spacerun:yes'>&nbsp;</span>* fullName</span><span style='font-size:
+9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>全名</span><span
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'> </span><span style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:
+Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'>（必填）</span><span lang=EN-US
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='mso-spacerun:yes'>&nbsp;</span>* email </span><span style='font-size:
+9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>邮箱</span><span
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'> </span><span style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:
+Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'>（必填）</span><span lang=EN-US
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='mso-spacerun:yes'>&nbsp;</span>* cardType </span><span style='font-size:
+9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>证件类型（非必填）</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='mso-spacerun:yes'>&nbsp;</span>* idNum<span
+style='mso-spacerun:yes'>&nbsp; </span></span><span style='font-size:9.0pt;
+font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>证件号码（非必填</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='mso-spacerun:yes'>&nbsp;</span>* personCode </span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>人员编码（非必填</span><span lang=EN-US style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'>)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='mso-spacerun:yes'>&nbsp;</span>* orgName </span><span style='font-size:
+9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>用户单位（非必填</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='mso-spacerun:yes'>&nbsp;</span>* gender </span><span style='font-size:
+9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>性别</span><span
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'> </span><span style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:
+Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'>（非必填）</span><span lang=EN-US
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='mso-spacerun:yes'>&nbsp;</span>* orderNo </span><span style='font-size:
+9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>排序后</span><span
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'> </span><span style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:
+Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'>（非必填）</span><span lang=EN-US
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='mso-spacerun:yes'>&nbsp;</span>* telNo </span><span style='font-size:
+9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>联系电话</span><span
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'> </span><span style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:
+Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'>（非必填）</span><span lang=EN-US
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='mso-spacerun:yes'>&nbsp;</span>* otherInfo </span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>备注</span><span style='font-size:9.0pt;font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'> </span><span style='font-size:9.0pt;
+font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>（非必填）</span><span
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'> <span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='mso-spacerun:yes'>&nbsp;</span>*/<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span style='font-size:9.0pt;
+font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>方案一：</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'> APIClient client=SSO.getAPIClient();//</span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>集成了</span><span lang=EN-US style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'>SSO<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span style='font-size:9.0pt;
+font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>方案二：</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'> APIClient
+client=APIClient.getInstance().setUserName(&quot;userName&quot;).setPassword(&quot;password&quot;);//</span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>直接指定用户</span><span lang=EN-US style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span style='font-size:9.0pt;
+font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>获取</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>client</span><span style='font-size:9.0pt;font-family:
+宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:
+Consolas;color:#333333;mso-font-kerning:0pt'>对象后，再根据如下代码获取</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>json</span><span style='font-size:9.0pt;font-family:宋体;
+mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:
+Consolas;color:#333333;mso-font-kerning:0pt'>对象：</span><span lang=EN-US
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>JSONObject
+resut4=client.parameter(&quot;userId&quot;, &quot;test&quot;)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:5'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>.parameter(&quot;fullName&quot;,
+&quot;</span><span style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:
+Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'>测试</span><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&quot;)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:5'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>.parameter(&quot;email&quot;,
+&quot;test@163.com&quot;)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:5'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>.parameter(&quot;cardType&quot;,
+&quot;</span><span style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:
+Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'>身份证</span><span lang=EN-US
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'>&quot;)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:5'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>.parameter(&quot;idNum&quot;,
+&quot;222&quot;)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:5'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>.parameter(&quot;personCode&quot;,
+&quot;00003&quot;)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:5'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>.parameter(&quot;orgName&quot;,
+&quot;</span><span style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:
+Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'>中软</span><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&quot;)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:5'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>.parameter(&quot;gender&quot;,
+&quot;</span><span style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:
+Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'>男</span><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&quot;)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:5'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>.parameter(&quot;orderNo&quot;,
+&quot;001&quot;)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:5'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>.parameter(&quot;telNo&quot;,
+&quot;13233913419&quot;)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:5'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>.parameter(&quot;otherInfo&quot;,
+&quot;</span><span style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:
+Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'>备注</span><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&quot;)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:5'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>.call(&quot;/createUser&quot;);<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+mso-pagination:widow-orphan'><span style='font-size:12.0pt;font-family:宋体;
+mso-bidi-font-family:宋体;mso-font-kerning:0pt'>返回结果<span lang=EN-US>(JSON)</span>：<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span style='font-size:9.0pt;
+font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>创建用户成功：</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>{<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&quot;result&quot;
+: &quot;success&quot;,<span style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&quot;personUuid&quot;
+: &quot;4089e35e427866c00142788d63850005&quot;<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>}<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span style='font-size:9.0pt;
+font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>创建用户失败：</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>{<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&quot;result&quot;
+: &quot;failure&quot;,<span style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&quot;error&quot;
+: &quot;</span><span style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:
+Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'>失败原因</span><span lang=EN-US
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'>&quot;<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>}<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-top:7.5pt;margin-right:0cm;
+margin-bottom:7.5pt;margin-left:0cm;text-align:left;line-height:30.0pt;
+mso-pagination:widow-orphan;mso-outline-level:2'><b><span lang=EN-US
+style='font-size:23.5pt;font-family:inherit;mso-bidi-font-family:宋体;mso-font-kerning:
+0pt'>1.5.5.</span></b><b><span style='font-size:23.5pt;font-family:宋体;
+mso-ascii-font-family:inherit;mso-hansi-font-family:inherit;mso-bidi-font-family:
+宋体;mso-font-kerning:0pt'>更新用户信息</span></b><b><span lang=EN-US style='font-size:
+23.5pt;font-family:inherit;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></b></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+mso-pagination:widow-orphan'><span style='font-size:12.0pt;font-family:宋体;
+mso-bidi-font-family:宋体;mso-font-kerning:0pt'>调用示例一<span lang=EN-US> (</span>通过客户端调用<span
+lang=EN-US>,</span>客户端的配置请参考</span><span lang=EN-US><a
+href="http://localhost:8080/auth/doc/OAuth2#apiclient"><span lang=EN-US
+style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;color:#0088CC;
+mso-font-kerning:0pt'><span lang=EN-US>使用客户端调用API</span></span></a></span><span
+style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+0pt'>部分<span lang=EN-US>)<o:p></o:p></span></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>/*<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='mso-spacerun:yes'>&nbsp;</span>* </span><span style='font-size:9.0pt;
+font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>参数说明：</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='mso-spacerun:yes'>&nbsp;</span>* personUuid</span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>用户</span><span lang=EN-US style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'>UUID (</span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>必填</span><span lang=EN-US style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'>)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='mso-spacerun:yes'>&nbsp;</span>* userId</span><span style='font-size:
+9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>登录帐号（必填）</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='mso-spacerun:yes'>&nbsp;</span>* fullName</span><span style='font-size:
+9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>全名</span><span
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'> </span><span style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:
+Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'>（必填）</span><span lang=EN-US
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='mso-spacerun:yes'>&nbsp;</span>* email </span><span style='font-size:
+9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>邮箱</span><span
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'> </span><span style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:
+Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'>（必填）</span><span lang=EN-US
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='mso-spacerun:yes'>&nbsp;</span>* cardType </span><span style='font-size:
+9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>证件类型（非必填）</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='mso-spacerun:yes'>&nbsp;</span>* idNum<span
+style='mso-spacerun:yes'>&nbsp; </span></span><span style='font-size:9.0pt;
+font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>证件号码（非必填</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='mso-spacerun:yes'>&nbsp;</span>* personCode </span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>人员编码</span><span lang=EN-US style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='mso-spacerun:yes'>&nbsp;</span>* orgName </span><span style='font-size:
+9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>用户单位</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='mso-spacerun:yes'>&nbsp;</span>* gender </span><span style='font-size:
+9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>性别</span><span
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'> </span><span style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:
+Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'>（非必填）</span><span lang=EN-US
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='mso-spacerun:yes'>&nbsp;</span>* orderNo </span><span style='font-size:
+9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>排序后</span><span
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'> </span><span style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:
+Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'>（非必填）</span><span lang=EN-US
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='mso-spacerun:yes'>&nbsp;</span>* telNo </span><span style='font-size:
+9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>联系电话</span><span
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'> </span><span style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:
+Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'>（非必填）</span><span lang=EN-US
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='mso-spacerun:yes'>&nbsp;</span>* otherInfo </span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>备注</span><span style='font-size:9.0pt;font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'> </span><span style='font-size:9.0pt;
+font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>（非必填）</span><span
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'> <span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='mso-spacerun:yes'>&nbsp;</span>*/<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span style='font-size:9.0pt;
+font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>方案一：</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'> APIClient client=SSO.getAPIClient();//</span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>集成了</span><span lang=EN-US style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'>SSO<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span style='font-size:9.0pt;
+font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>方案二：</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'> APIClient
+client=APIClient.getInstance().setUserName(&quot;userName&quot;).setPassword(&quot;password&quot;);//</span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>直接指定用户</span><span lang=EN-US style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span style='font-size:9.0pt;
+font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>获取</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>client</span><span style='font-size:9.0pt;font-family:
+宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:
+Consolas;color:#333333;mso-font-kerning:0pt'>对象后，再根据如下代码获取</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>json</span><span style='font-size:9.0pt;font-family:宋体;
+mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:
+Consolas;color:#333333;mso-font-kerning:0pt'>对象：</span><span lang=EN-US
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>JSONObject
+resut6=client.parameter(&quot;personUuid&quot;, &quot;4089e35e427866c00142788d63850005&quot;)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:5'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>.parameter(&quot;userId&quot;,
+&quot;test&quot;)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:5'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>.parameter(&quot;fullName&quot;,
+&quot;</span><span style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:
+Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'>测试</span><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>1&quot;)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:5'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>.parameter(&quot;email&quot;,
+&quot;tes1t@163.com&quot;)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:5'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>.parameter(&quot;cardType&quot;,
+&quot;</span><span style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:
+Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'>身份证</span><span lang=EN-US
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'>1&quot;)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:5'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>.parameter(&quot;idNum&quot;,
+&quot;2221&quot;)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:5'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>.parameter(&quot;personCode&quot;,
+&quot;00001&quot;)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:5'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>.parameter(&quot;orgName&quot;,
+&quot;</span><span style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:
+Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'>中软</span><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>1&quot;)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:5'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>.parameter(&quot;gender&quot;,
+&quot;</span><span style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:
+Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'>男</span><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>&quot;)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:5'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>.parameter(&quot;orderNo&quot;,
+&quot;002&quot;)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:5'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>.parameter(&quot;telNo&quot;,
+&quot;13233913419&quot;)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:5'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>.parameter(&quot;otherInfo&quot;,
+&quot;</span><span style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:
+Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'>备注</span><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>1&quot;)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:5'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>.call(&quot;/updateUser&quot;);<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+mso-pagination:widow-orphan'><span style='font-size:12.0pt;font-family:宋体;
+mso-bidi-font-family:宋体;mso-font-kerning:0pt'>返回结果<span lang=EN-US>(JSON)</span>：<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span style='font-size:9.0pt;
+font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>更新成功：</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>{&quot;result&quot; : &quot;success&quot;}<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span style='font-size:9.0pt;
+font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>更新失败：</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>{&quot;result&quot; : &quot;failure&quot;,
+&quot;error&quot; : &quot;</span><span style='font-size:9.0pt;font-family:宋体;
+mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:
+Consolas;color:#333333;mso-font-kerning:0pt'>失败原因</span><span lang=EN-US
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'>&quot;}</span><span lang=EN-US style='font-size:10.0pt;font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-top:7.5pt;margin-right:0cm;
+margin-bottom:7.5pt;margin-left:0cm;text-align:left;line-height:30.0pt;
+mso-pagination:widow-orphan;mso-outline-level:2'><b><span lang=EN-US
+style='font-size:23.5pt;font-family:inherit;mso-bidi-font-family:宋体;mso-font-kerning:
+0pt'>1.5.6.</span></b><b><span style='font-size:23.5pt;font-family:宋体;
+mso-ascii-font-family:inherit;mso-hansi-font-family:inherit;mso-bidi-font-family:
+宋体;mso-font-kerning:0pt'>删除用户</span></b><b><span lang=EN-US style='font-size:
+23.5pt;font-family:inherit;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></b></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+mso-pagination:widow-orphan'><span style='font-size:12.0pt;font-family:宋体;
+mso-bidi-font-family:宋体;mso-font-kerning:0pt'>调用示例一<span lang=EN-US> (</span>通过客户端调用<span
+lang=EN-US>,</span>客户端的配置请参考</span><span lang=EN-US><a
+href="http://localhost:8080/auth/doc/OAuth2#apiclient"><span lang=EN-US
+style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;color:#0088CC;
+mso-font-kerning:0pt'><span lang=EN-US>使用客户端调用API</span></span></a></span><span
+style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+0pt'>部分<span lang=EN-US>)<o:p></o:p></span></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>/*<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-spacerun:yes'>&nbsp;</span>* </span><span style='font-size:9.0pt;
+font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>参数说明：</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-spacerun:yes'>&nbsp;</span>* personUuids </span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>用户</span><span lang=EN-US style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'>UUID (</span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>必填</span><span lang=EN-US style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'>)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-spacerun:yes'>&nbsp;</span>*<span
+style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:
+Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'>单条删除</span><span style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'> </span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>例如：</span><span lang=EN-US style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'>parameter(&quot;personUuids&quot;,
+&quot;4089e35142736fd6014273fb5c470008&quot;);<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-spacerun:yes'>&nbsp;</span>*<span
+style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:
+Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'>批量删除</span><span style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'> </span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>例如：</span><span lang=EN-US style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'>parameter(&quot;personUuids&quot;,
+&quot;4089e35142736fd60142738d21080005,4089e35142736fd6014273fb5c470008,.......&quot;)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-spacerun:yes'>&nbsp;</span>*/<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span style='font-size:9.0pt;
+font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>方案一：</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'> APIClient client=SSO.getAPIClient();//</span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>集成了</span><span lang=EN-US style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'>SSO<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span style='font-size:9.0pt;
+font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>方案二：</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'> APIClient client=<a name="_GoBack"></a>APIClient.getInstance().setUserName(&quot;userName&quot;).setPassword(&quot;password&quot;);//</span><span
+style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:Consolas;
+mso-hansi-font-family:Consolas;mso-bidi-font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>直接指定用户</span><span lang=EN-US style='font-size:9.0pt;
+font-family:Consolas;color:#333333;mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span style='font-size:9.0pt;
+font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>获取</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>client</span><span style='font-size:9.0pt;font-family:
+宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:
+Consolas;color:#333333;mso-font-kerning:0pt'>对象后，再根据如下代码获取</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>json</span><span style='font-size:9.0pt;font-family:宋体;
+mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:
+Consolas;color:#333333;mso-font-kerning:0pt'>对象：</span><span lang=EN-US
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'>JSONObject
+resut6=client.parameter(&quot;personUuids&quot;,
+&quot;4089e35142736fd60142738d21080005,4089e35142736fd6014273fb5c470008&quot;)<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:0pt'><span
+style='mso-tab-count:3'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>.call(&quot;/deleteUser&quot;);<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+mso-pagination:widow-orphan'><span style='font-size:12.0pt;font-family:宋体;
+mso-bidi-font-family:宋体;mso-font-kerning:0pt'>返回结果<span lang=EN-US>(JSON)</span>：<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span style='font-size:9.0pt;
+font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>删除成功：</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>{&quot;result&quot; : &quot;success&quot;}<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:7.5pt;text-align:left;
+line-height:15.0pt;mso-pagination:widow-orphan;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+background:whitesmoke;word-break:break-all'><span style='font-size:9.0pt;
+font-family:宋体;mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;
+mso-bidi-font-family:Consolas;color:#333333;mso-font-kerning:0pt'>删除失败：</span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333;
+mso-font-kerning:0pt'>{&quot;result&quot; : &quot;failure&quot;,
+&quot;error&quot; : &quot;</span><span style='font-size:9.0pt;font-family:宋体;
+mso-ascii-font-family:Consolas;mso-hansi-font-family:Consolas;mso-bidi-font-family:
+Consolas;color:#333333;mso-font-kerning:0pt'>失败原因</span><span lang=EN-US
+style='font-size:9.0pt;font-family:Consolas;color:#333333;mso-font-kerning:
+0pt'>&quot;}</span><span lang=EN-US style='font-size:10.0pt;font-family:Consolas;
+color:#333333;mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=ICSS style='text-indent:21.0pt'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<p class=ICSS style='text-indent:21.0pt'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+</div>
+</div>
+</body>
+
+</html>

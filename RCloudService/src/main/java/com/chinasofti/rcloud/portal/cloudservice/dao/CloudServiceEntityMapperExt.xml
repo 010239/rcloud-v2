@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinasofti.rcloud.portal.cloudservice.dao.CloudServiceEntityMapperExt">
+
+	<select id="getAllCloudService" resultType="map">
+		SELECT
+			bservice.service_name serviceName,
+			iprice.chname chname,
+			iprice.description,
+			porder.order_id orderId,
+			bservice.service_id serviceId,
+			iprice.id inclusivePriceId
+		FROM
+			portal_service_order porder
+		LEFT JOIN boss_service bservice ON porder.service_id = bservice.service_id
+		LEFT JOIN boss_inclusive_price iprice ON iprice.id = porder.inclusive_price_id
+		WHERE
+			porder.buyer_id = #{userId} and porder.status=1 and porder.mark_delete=0
+		GROUP BY
+			porder.order_id
+		ORDER BY
+			porder.create_time DESC
+	</select>
+	<select id="getServiceOrderInfo" resultType="map">
+		SELECT
+			porder.order_number orderNum,
+			bprice.description,
+			bprice.chname,
+			porder.pay_pattern type,
+			porder.`status`,
+			porder.end_time endTime,
+			porder.service_price unitPrice,
+			porder.total_price totalPrice,
+			porder.total_month deadline,
+			porder.order_description des
+		FROM
+			portal_service_order porder
+		LEFT JOIN boss_inclusive_price bprice ON porder.inclusive_price_id = bprice.id
+		WHERE
+			porder.order_id = #{orderId}
+	</select>
+	
+	<select id="getServiceCredentialList" parameterType="map" resultType="map">
+		SELECT
+			keyrecord.access_key_id keyID,
+			keyrecord.access_key_secret keySecret,
+			bservice.service_name serviceName,
+			bprice.chname,
+			porder.order_number orderNum,
+			keyrecord.`status`
+		FROM
+			portal_access_key_record keyrecord
+		LEFT JOIN boss_service bservice ON keyrecord.service_id = bservice.service_id
+		LEFT JOIN portal_service_order porder ON porder.service_id = keyrecord.service_id
+		LEFT JOIN boss_inclusive_price bprice ON porder.inclusive_price_id = bprice.id
+		WHERE
+		keyrecord.service_order_id = #{orderId}
+		AND	keyrecord.service_id = #{serviceId}   and keyRecord.status!=3
+		group by keyrecord.access_key_id 
+	</select>
+	
+	<select id="getCloudservicePlatform" resultType="map">
+		SELECT
+		'1' AS buyStatus,
+		bservice.service_id serviceId,
+		bservice.service_name serviceName,
+		DATE_FORMAT(porder.end_time,'%Y-%m-%d') endTime,
+		bservice.service_description description,
+		bservice.logo_path logoPath,
+		bservice.manage_url url
+		FROM
+			boss_service bservice
+		LEFT JOIN portal_service_order porder ON bservice.service_id = porder.service_id
+		WHERE
+			bservice.service_id IN(
+				SELECT
+					service_id
+				FROM
+					portal_service_order
+				WHERE
+					buyer_id = #{userId}
+			)
+			and  porder.buyer_id=#{userId}
+		UNION ALL
+		SELECT
+			'0' AS buyStatus,
+			bservice.service_id serviceId,
+			bservice.service_name serviceName,
+			'' AS endTime,
+			bservice.service_description description,
+			bservice.logo_path logoPath,
+			bservice.show_detail_url url
+		FROM
+			boss_service bservice
+		WHERE
+			bservice.service_id NOT IN(
+				SELECT
+					service_id
+				FROM
+					portal_service_order
+				WHERE
+					buyer_id = #{userId}
+			)
+	</select>
+	
+	
+	<select id="getAllCloudServiceOrder" resultType="map">
+		SELECT
+			porder.order_id,
+			porder.order_number orderNum,
+			bservice.service_name serviceName,
+			bprice.chname,
+			porder.`status`
+		FROM
+			portal_service_order porder
+		LEFT JOIN boss_service bservice ON porder.service_id = bservice.service_id
+		LEFT JOIN boss_inclusive_price bprice ON porder.inclusive_price_id = bprice.id
+		WHERE
+			porder.buyer_id = #{userId}
+	</select>
+	
+	
+	<select id="getUserInfo" resultType="map">
+		SELECT
+			puser.user_id userId,
+			puser.user_name userName,
+			puser.real_name realName,
+			puser.area_name areaName,
+			puser.streat_name streatName,
+			puser.user_email email,
+			puser.mobile_phone mobilePhone,
+			puser.company_name companyName,
+			puser.fixed_phone fixedPhone,
+			paccount.money_amount money,
+			puser.user_email userEmail
+		FROM
+			portal_user puser
+		LEFT JOIN portal_user_account paccount ON puser.user_id = paccount.user_id
+		WHERE
+			puser.user_id = #{userId}
+	</select>
+	
+	
+	<select id="getCloudServiceOrder" resultType="map">
+		select * from portal_service_order porder where porder.buyer_id=#{userId} and porder.service_id=#{serviceId}
+	</select>
+	
+	
+	<select id="selectAccessKeyByPage" parameterType="map" resultType="com.chinasofti.rcloud.portal.userconsole.domain.AccessKeyRecordEntityExt">
+		select _key.access_key_id as accessKeyId, _key.status, _key.user_id as userId, _key.access_key_secret as accessKeySecret, _user.user_name as creator
+		from portal_access_key_record as _key
+		left join portal_user as _user on _key.user_id = _user.user_id
+		where _key.user_id in  
+		 <foreach item="userId" index="index" collection="userIdList" open="(" separator="," close=")">  
+		 	 #{userId}  
+		 </foreach>  
+		and _key.status != 3
+		ORDER BY _key.created_time desc
+	</select>
+	
+	<select id="countAccessKey" parameterType="map" resultType="java.lang.Integer">
+		select count(access_key_id) from portal_access_key_record
+		where user_id in 
+		 <foreach item="userId" index="index" collection="userIdList" open="(" separator="," close=")">  
+		 	 #{userId}  
+		 </foreach>  
+		and status != 3
+	</select>
+	
+	<select id="getManageUrlList" resultType="map">
+		SELECT
+		rservice.service_name,rservice.manage_url
+		FROM
+			boss_service_rportal rservice
+
+	</select>
+	
+</mapper>

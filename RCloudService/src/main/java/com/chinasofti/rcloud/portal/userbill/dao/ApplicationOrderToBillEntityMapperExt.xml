@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinasofti.rcloud.portal.userbill.dao.ApplicationOrderToBillEntityMapperExt">
+	<resultMap id="ApplicationOrderToBillResultMap" type="ApplicationOrderToBillEntityKey" 
+			extends="com.chinasofti.rcloud.dao.ApplicationOrderToBillEntityMapper.BaseResultMap">
+	</resultMap>
+	
+	<select id="getOrderIdList" parameterType="java.lang.String" resultMap="ApplicationOrderToBillResultMap">
+		SELECT order_id
+		FROM portal_application_order_to_bill
+		WHERE bill_id =#{billId}
+	</select>
+	
+	<insert id="batchInsert" parameterType="map">
+		INSERT INTO portal_service_order_to_bill (bill_id, order_id)
+		VALUES 
+		<foreach collection="orderIdList" item="orderId" index="index" separator=",">
+	        (#{orderId}, #{billId})
+	    </foreach>
+	</insert>
+</mapper>

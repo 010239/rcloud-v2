@@ -1,0 +1,230 @@
+@charset "utf-8";
+/* CSS Document */
+/*输入框错误提示相关样式表*/
+.formError {
+    z-index: 990;
+}
+.formError .formErrorContent {
+    z-index: 991;
+}
+.formError .formErrorArrow {
+    z-index: 996;
+}
+.ui-dialog .formError {
+    z-index: 5000;
+}
+.ui-dialog .formError .formErrorContent {
+    z-index: 5001;
+}
+.ui-dialog .formError .formErrorArrow {
+    z-index: 5006;
+}
+.inputContainer {
+    float: left;
+    position: relative;
+}
+.formError {
+    cursor: pointer;
+    display: block;
+    left: 300px;
+    position: absolute;
+    text-align: left;
+    top: 300px;
+}
+.formError.inline {
+    display: inline-block;
+    left: 0;
+    position: relative;
+    top: 0;
+}
+.ajaxSubmit {
+    background-color: #55EA55;
+    border: 1px solid #999999;
+    display: none;
+    padding: 20px;
+}
+.formError .formErrorContent {
+    /*background-color: #EE0101;*/
+    border: 2px solid #DDDDDD;
+    border-radius: 6px;
+    box-shadow: 0 0 6px #000000;
+    color: #EE0101;
+    font: 12px/18px "宋体",Tahoma;
+    min-width: 120px;
+    /*padding: 4px 10px;*/
+    position: relative;
+    width: 100%;
+}
+.formError.inline .formErrorContent {
+    border: 0 none;
+    border-radius: 0;
+    box-shadow: none;
+	font-weight:bold;
+}
+.greenPopup .formErrorContent {
+    background-color: #33BE40;
+}
+.blackPopup .formErrorContent {
+    background-color: #393939;
+    color: #FFFFFF;
+}
+.formError .formErrorArrow {
+    margin: -2px 0 0 13px;
+    position: relative;
+    width: 15px;
+}
+body[dir="rtl"] .formError .formErrorArrow, body.rtl .formError .formErrorArrow {
+    margin: -2px 13px 0 0;
+}
+.formError .formErrorArrowBottom {
+    box-shadow: none;
+    margin: 0 0 0 12px;
+    top: 2px;
+}
+.formError .formErrorArrow div {
+    background-color: #EE0101;
+    border-left: 2px solid #DDDDDD;
+    border-right: 2px solid #DDDDDD;
+    box-shadow: 0 2px 3px #444444;
+    display: block;
+    font-size: 0;
+    height: 1px;
+    line-height: 0;
+    margin: 0 auto;
+}
+.formError .formErrorArrowBottom div {
+    box-shadow: none;
+}
+.greenPopup .formErrorArrow div {
+    background-color: #33BE40;
+}
+.blackPopup .formErrorArrow div {
+    background-color: #393939;
+    color: #FFFFFF;
+}
+.formError .formErrorArrow .line10 {
+    border: 0 none;
+    width: 15px;
+}
+.formError .formErrorArrow .line9 {
+    border: 0 none;
+    width: 13px;
+}
+.formError .formErrorArrow .line8 {
+    width: 11px;
+}
+.formError .formErrorArrow .line7 {
+    width: 9px;
+}
+.formError .formErrorArrow .line6 {
+    width: 7px;
+}
+.formError .formErrorArrow .line5 {
+    width: 5px;
+}
+.formError .formErrorArrow .line4 {
+    width: 3px;
+}
+.formError .formErrorArrow .line3 {
+    border-bottom: 0 solid #DDDDDD;
+    border-left: 2px solid #DDDDDD;
+    border-right: 2px solid #DDDDDD;
+    width: 1px;
+}
+.formError .formErrorArrow .line2 {
+    background-color: #DDDDDD;
+    border: 0 none;
+    width: 3px;
+}
+.formError .formErrorArrow .line1 {
+    background-color: #DDDDDD;
+    border: 0 none;
+    width: 1px;
+}
+.formError-noArrow .formErrorArrow {
+    display: none;
+}
+.formError-text .formErrorContent {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    box-shadow: none;
+    color: #ED1B23;
+    padding: 0;
+}
+.formError-text.greenPopup .formErrorContent {
+    color: #33BE40;
+}
+.formError-text.blackPopup .formErrorContent {
+    color: #393939;
+}
+.formError-text .formErrorArrow {
+    display: none;
+}
+.formError-small .formErrorContent {
+    border: 1px solid #333333;
+    border-radius: 4px;
+    box-shadow: 0 0 2px #FFFFFF inset, 0 0 2px #333333;
+    padding: 3px 10px;
+}
+.formError-small .formErrorArrow div {
+    border-left-color: #333333;
+    border-right-color: #333333;
+    box-shadow: none;
+    display: none;
+}
+.formError-small .formErrorArrow .line7, .formError-small .formErrorArrow .line6, .formError-small .formErrorArrow .line5, .formError-small .formErrorArrow .line4, .formError-small .formErrorArrow .line3, .formError-small .formErrorArrow .line1 {
+    border-width: 0 1px;
+    display: block;
+}
+.formError-small .formErrorArrow .line7 {
+    border: 0 none;
+}
+.formError-small .formErrorArrow .line3 {
+    border-color: #333333;
+    border-width: 0 1px;
+}
+.formError-small .formErrorArrow .line1 {
+    background-color: #333333;
+}
+.formError-white .formErrorContent {
+    background-color: #FFFFFF;
+    border-color: #ED1B23;
+    box-shadow: 0 0 2px #ED1B23;
+    color: #ED1B23;
+}
+.formError-white.greenPopup .formErrorContent {
+    background-color: #33BE40;
+    border-color: #333333;
+    box-shadow: 0 0 2px #333333;
+    color: #FFFFFF;
+}
+.formError-white.blackPopup .formErrorContent {
+    background-color: #393939;
+    border-color: #333333;
+    box-shadow: 0 0 2px #333333;
+    color: #FFFFFF;
+}
+.formError-white .formErrorArrow div {
+    background-color: #FFFFFF;
+    border-color: #ED1B23;
+    box-shadow: none;
+}
+.formError-white.greenPopup .formErrorArrow div {
+    background-color: #33BE40;
+    border-color: #333333;
+}
+.formError-white.blackPopup .formErrorArrow div {
+    background-color: #393939;
+    border-color: #333333;
+}
+.formError-white .formErrorArrow .line3 {
+    border-color: #ED1B23;
+}
+.formError-white .formErrorArrow .line2 {
+    background-color: #ED1B23;
+}
+.formError-white .formErrorArrow .line1 {
+    background-color: #ED1B23;
+}
+
+

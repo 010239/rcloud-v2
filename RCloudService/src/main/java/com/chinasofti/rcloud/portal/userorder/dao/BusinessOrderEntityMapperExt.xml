@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chinasofti.rcloud.portal.userorder.dao.BusinessOrderEntityMapperExt" >
+  <resultMap id="BusinessOrderResultMap" type="BusinessOrderEntityExt" 
+  		extends="com.chinasofti.rcloud.dao.BusinessOrderEntityMapper.ResultMapWithBLOBs">
+	  <result column="prod_name" property="prodName" jdbcType="VARCHAR" />
+	  <result column="pkg_name" property="pkgName" jdbcType="VARCHAR" />
+  </resultMap> 
+  
+  <sql id="Base_Column_List">
+  	o.business_order_id, o.user_id, o.prod_id, o.pkg_id, o.business_order_type, o.status, o.create_time, 
+  	o.pay_pattern, o.mark_delete, o.cancel_time, o.cancel_reason
+  </sql>
+  
+   <select id="searchOrderByPage" parameterType="map"  resultMap="BusinessOrderResultMap">
+ 	SELECT
+ 	<include refid="Base_Column_List"/> , p.prod_name, g.pkg_name
+ 	FROM
+ 	portal_business_order o,  boss_products p, boss_pkg g 
+ 	<where>
+       o.prod_id = p.prod_id AND o.pkg_id = g.pkg_id   AND o.mark_delete =0
+   		  AND o.user_id =#{userId}
+		<if test="oStatus != null and oStatus != ''">
+			AND o.status = #{oStatus}
+		</if>
+		<if test="orderType != null and orderType != ''">
+			AND o.business_order_type = #{orderType}
+		</if>
+		<if test="orderStartTime != null">
+  			AND o.create_time &gt;= #{orderStartTime}
+  		</if>
+  		<if test="orderEndTime != null">
+  			AND o.create_time &lt;= #{orderEndTime}
+  		</if>
+    </where>
+    ORDER BY o.create_time DESC
+  </select>
+  
+   <select id="countSearchOrder" parameterType="map"  resultType="java.lang.Integer">
+ 	SELECT
+ 	COUNT(o.business_order_id)
+ 	FROM
+ 	portal_business_order o, boss_products p, boss_pkg g
+ 	<where>
+         o.prod_id = p.prod_id AND o.pkg_id = g.pkg_id  AND o.mark_delete =0
+    	 AND o.user_id =#{userId}
+		<if test="oStatus != null and oStatus != ''">
+			AND o.status = #{oStatus}
+		</if>
+		<if test="orderType != null and orderType != ''">
+			AND o.business_order_type = #{orderType}
+		</if>
+		<if test="orderStartTime != null">
+  			AND o.create_time &gt;= #{orderStartTime}
+  		</if>
+  		<if test="orderEndTime != null">
+  			AND o.create_time &lt;= #{orderEndTime}
+  		</if>
+    </where>
+    ORDER BY o.create_time DESC
+  </select>
+  
+  
+  <select id="getOrderInfo" parameterType="java.lang.String"  resultMap="BusinessOrderResultMap">
+ 	SELECT
+ 	<include refid="Base_Column_List"/>,  p.prod_name, g.pkg_name
+ 	FROM
+ 	portal_business_order o, boss_products p, boss_pkg g 
+ 	WHERE
+         o.prod_id = p.prod_id AND o.pkg_id = g.pkg_id   AND o.mark_delete =0
+    	AND o.business_order_id =#{businessOrderId}
+  
+ </select>
+ 
+  <select id="getOrder" parameterType="map"  resultMap="BusinessOrderResultMap">
+ 	SELECT
+ 	<include refid="Base_Column_List"/> 
+ 	FROM
+ 	portal_business_order o
+ 	LEFT JOIN boss_products p ON   p.prod_id =o.prod_id
+ 	WHERE
+         o.status in(0,1)    AND o.mark_delete =0
+    	AND o.user_id =#{userId} AND p.service_id=#{serviceId}
+  
+ </select>
+ 
+   <select id="getServiceList" parameterType="java.lang.String"  resultType="map">
+ 	SELECT
+ 	p.service_id serviceId, o.status status
+ 	FROM
+ 	portal_business_order o
+ 	LEFT JOIN boss_products p ON   p.prod_id =o.prod_id
+ 	WHERE
+         o.status in(0,1)    AND o.mark_delete =0
+    	AND o.user_id =#{userId} 
+  
+ </select>
+    <select id="getOrderInfoByCon" parameterType="map"  resultMap="BusinessOrderResultMap">
+   SELECT
+ 	<include refid="Base_Column_List"/>
+ 	FROM
+ 	portal_business_order o where o.prod_id=#{prod_id} and o.user_id=#{user_id} and o.status=0 and o.mark_delete =0
+ 	<!-- and o.account_tag=0 -->
+   </select>
+     <update id="updateOrderInfoStatus" parameterType="map">
+		UPDATE portal_business_order set account_tag=#{account_tag},status=#{status},restart_time=#{restart_time}
+		WHERE business_order_id = #{business_order_id}
+	</update> 
+</mapper>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+    	<typeAlias alias="ApplicationEntityExt" type="com.chinasofti.rcloud.portal.cloudshop.domain.ApplicationEntityExt" />
+		<typeAlias alias="UserEntity" type="com.chinasofti.rcloud.domain.UserEntity"/>
+		<typeAlias alias="ApplicationOrderEntityExt" type="com.chinasofti.rcloud.portal.userorder.domain.ApplicationOrderEntityExt"/>
+		<typeAlias alias="ServiceEntity" type="com.chinasofti.rcloud.domain.ServiceEntity"/>
+		<typeAlias alias="ApplicationEntity" type="com.chinasofti.rcloud.domain.ApplicationEntity"/>
+		<typeAlias alias="ApplicationBillEntity" type="com.chinasofti.rcloud.domain.ApplicationBillEntity"/>
+		<typeAlias alias="ApplicationBillEntityExt" type="com.chinasofti.rcloud.portal.userbill.domain.ApplicationBillEntityExt"/>
+    	<typeAlias alias="ApplicationOrderToBillEntityKey" type="com.chinasofti.rcloud.domain.ApplicationOrderToBillEntityKey"/>
+   		<typeAlias alias="BusinessOrderEntityExt" type="com.chinasofti.rcloud.portal.userorder.domain.BusinessOrderEntityExt"/>
+   		<typeAlias alias="BossServiceBillEntityExt" type="com.chinasofti.rcloud.portal.userbill.domain.BossServiceBillEntityExt"/>
+   		<typeAlias alias="BossDebtsEntityExt" type="com.chinasofti.rcloud.portal.userbill.domain.BossDebtsEntityExt"/>
+   		
+   		
+   		<!-- 待删除 -->
+   		<typeAlias alias="DebtsRecordEntity" type="com.chinasofti.rcloud.domain.DebtsRecordEntity"/>
+    </typeAliases>
+
+	<plugins>  
+        <plugin interceptor="com.chinasofti.rcloud.common.PageInterceptor"/>  
+    </plugins>
+</configuration>

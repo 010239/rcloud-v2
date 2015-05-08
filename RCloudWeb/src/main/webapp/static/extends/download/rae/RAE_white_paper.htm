@@ -1,0 +1,903 @@
+﻿<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 14 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:宋体;
+	panose-1:2 1 6 0 3 1 1 1 1 1;}
+@font-face
+	{font-family:黑体;
+	panose-1:2 1 6 9 6 1 1 1 1 1;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+@font-face
+	{font-family:"\@黑体";
+	panose-1:2 1 6 9 6 1 1 1 1 1;}
+@font-face
+	{font-family:"\@宋体";
+	panose-1:2 1 6 0 3 1 1 1 1 1;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	font-size:10.5pt;
+	font-family:"Calibri","sans-serif";}
+h1
+	{mso-style-name:"标题 1\,H1\,CSS章标记\,标题1金审\,1\,dd heading 1\,dh1\,编号标题 1";
+	mso-style-link:"标题 1 Char\,H1 Char\,CSS章标记 Char\,标题1金审 Char\,1 Char\,dd heading 1 Char\,dh1 Char\,编号标题 1 Char";
+	margin-top:17.0pt;
+	margin-right:0cm;
+	margin-bottom:16.5pt;
+	margin-left:70.9pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:0cm;
+	line-height:240%;
+	page-break-after:avoid;
+	font-size:22.0pt;
+	font-family:"Calibri","sans-serif";}
+h2
+	{mso-style-name:"标题 2\,H2\,CSS节标记\,ICSS章标记\,标题2金审\,2\,h2\,sub-sect\,heading 2\,dd heading 2\,dh2\,编号标题2\,2nd level\,Header 2\,l2\,Level 2 Head\,H2normal full\,Heading 2 Hidden\,标题 4\.1\,UNDERRUBRIK 1-2\,Underrubrik1\,prop2\,标题2\,Heading 2 CCBS\,Titre2\,Head 2\,Heading2\,No Number\,A\,o\,22";
+	mso-style-link:"标题 2 Char\,H2 Char\,CSS节标记 Char\,ICSS章标记 Char\,标题2金审 Char\,2 Char\,h2 Char\,sub-sect Char\,heading 2 Char\,dd heading 2 Char\,dh2 Char\,编号标题2 Char\,2nd level Char\,Header 2 Char\,l2 Char\,Level 2 Head Char\,H2normal full Char\,Heading 2 Hidden Char\,标题 4\.1 Char\,标题2 Char";
+	margin-top:13.0pt;
+	margin-right:0cm;
+	margin-bottom:13.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:0cm;
+	line-height:173%;
+	page-break-after:avoid;
+	font-size:16.0pt;
+	font-family:"Cambria","serif";}
+h3
+	{mso-style-name:"标题 3\,CSS节内1级标记\,H3\,sect1\.2\.3\,l3\,CT\,h3\,BOD 0\,Heading 3 - old\,Level 3 Head\,level_3\,PIM 3\,2nd Subhead\,Bold Head\,bh\,ICSS节标记\,3\,PRTM Heading 3\,第二层条\,Level 3 Topic Heading\,sect1\.2\.31\,sect1\.2\.32\,sect1\.2\.311\,sect1\.2\.33\,sect1\.2\.312\,Heading 2\.3\,1\.2\.3\.\,Titles\,\(Alt+3\)";
+	mso-style-link:"标题 3 Char\,CSS节内1级标记 Char\,H3 Char\,sect1\.2\.3 Char\,l3 Char\,CT Char\,h3 Char\,BOD 0 Char\,Heading 3 - old Char\,Level 3 Head Char\,level_3 Char\,PIM 3 Char\,2nd Subhead Char\,Bold Head Char\,bh Char\,ICSS节标记 Char\,3 Char\,PRTM Heading 3 Char\,第二层条 Char\,sect1\.2\.31 Char";
+	margin-top:13.0pt;
+	margin-right:0cm;
+	margin-bottom:13.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	line-height:173%;
+	page-break-after:avoid;
+	font-size:16.0pt;
+	font-family:"Calibri","sans-serif";}
+h4
+	{mso-style-name:"标题 4\,CSS节内2级标记\,CSS节内2级标记 Char\,4\,编号标题 4 Char";
+	mso-style-link:"标题 4 Char\,CSS节内2级标记 Char1\,CSS节内2级标记 Char Char\,4 Char\,编号标题 4 Char Char";
+	margin-top:14.0pt;
+	margin-right:0cm;
+	margin-bottom:14.5pt;
+	margin-left:0cm;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	line-height:156%;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Arial","sans-serif";}
+h5
+	{mso-style-name:"标题 5\,CSS节内3级标记\,CSS节内3级标记 Char Char Char\,CSS节内3级标记 Char\,dash\,ds\,dd\,H5\,h5\,Second Subheading\,第四层条\,PIM 5\,Block Label\,1\.1\.1\,口\,heading 5\,h51\,heading 51\,h52\,heading 52\,h53\,heading 53\,Level 3 - i\,5\,l4\,标 5\,H51\,H52\,H53\,第五层\,Roman list\,标题5金审";
+	mso-style-link:"标题 5 Char\,CSS节内3级标记 Char1\,CSS节内3级标记 Char Char Char Char\,CSS节内3级标记 Char Char\,dash Char\,ds Char\,dd Char\,H5 Char\,h5 Char\,Second Subheading Char\,第四层条 Char\,PIM 5 Char\,Block Label Char\,1\.1\.1 Char\,口 Char\,heading 5 Char\,h51 Char\,heading 51 Char\,h52 Char\,5 Char";
+	margin-top:14.0pt;
+	margin-right:0cm;
+	margin-bottom:14.5pt;
+	margin-left:0cm;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	line-height:156%;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Calibri","sans-serif";}
+h6
+	{mso-style-name:"标题 6\,CSS节内4级标记\,6";
+	mso-style-link:"标题 6 Char\,CSS节内4级标记 Char\,6 Char";
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.2pt;
+	margin-left:0cm;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	line-height:133%;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{mso-style-link:"页眉 Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	layout-grid-mode:char;
+	border:none;
+	padding:0cm;
+	font-size:9.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{mso-style-link:"页脚 Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	layout-grid-mode:char;
+	font-size:9.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{mso-style-name:"正文文本\,Body Text\(ch\)\,body text\,bt";
+	mso-style-link:"正文文本 Char\,Body Text\(ch\) Char\,body text Char\,bt Char";
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:24.1pt;
+	line-height:150%;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:宋体;}
+p.MsoDate, li.MsoDate, div.MsoDate
+	{mso-style-link:"日期 Char";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:5.0pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	font-size:10.5pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoDocumentMap, li.MsoDocumentMap, div.MsoDocumentMap
+	{mso-style-link:"文档结构图 Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	font-size:9.0pt;
+	font-family:宋体;}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-link:"批注框文本 Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	font-size:9.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:21.0pt;
+	font-size:10.5pt;
+	font-family:"Calibri","sans-serif";}
+span.Char
+	{mso-style-name:"页眉 Char";
+	mso-style-link:页眉;}
+span.Char0
+	{mso-style-name:"页脚 Char";
+	mso-style-link:页脚;}
+span.Char1
+	{mso-style-name:"批注框文本 Char";
+	mso-style-link:批注框文本;}
+span.Char2
+	{mso-style-name:"日期 Char";
+	mso-style-link:日期;}
+span.1Char
+	{mso-style-name:"标题 1 Char\,H1 Char\,CSS章标记 Char\,标题1金审 Char\,1 Char\,dd heading 1 Char\,dh1 Char\,编号标题 1 Char";
+	mso-style-link:"标题 1\,H1\,CSS章标记\,标题1金审\,1\,dd heading 1\,dh1\,编号标题 1";
+	font-weight:bold;}
+span.Char3
+	{mso-style-name:"文档结构图 Char";
+	mso-style-link:文档结构图;
+	font-family:宋体;}
+span.2Char
+	{mso-style-name:"标题 2 Char\,H2 Char\,CSS节标记 Char\,ICSS章标记 Char\,标题2金审 Char\,2 Char\,h2 Char\,sub-sect Char\,heading 2 Char\,dd heading 2 Char\,dh2 Char\,编号标题2 Char\,2nd level Char\,Header 2 Char\,l2 Char\,Level 2 Head Char\,H2normal full Char\,Heading 2 Hidden Char\,标题 4\.1 Char\,标题2 Char";
+	mso-style-link:"标题 2\,H2\,CSS节标记\,ICSS章标记\,标题2金审\,2\,h2\,sub-sect\,heading 2\,dd heading 2\,dh2\,编号标题2\,2nd level\,Header 2\,l2\,Level 2 Head\,H2normal full\,Heading 2 Hidden\,标题 4\.1\,UNDERRUBRIK 1-2\,Underrubrik1\,prop2\,标题2\,Heading 2 CCBS\,Titre2\,Head 2\,Heading2\,No Number\,A\,o\,22";
+	font-family:"Cambria","serif";
+	font-weight:bold;}
+span.3Char
+	{mso-style-name:"标题 3 Char\,CSS节内1级标记 Char\,H3 Char\,sect1\.2\.3 Char\,l3 Char\,CT Char\,h3 Char\,BOD 0 Char\,Heading 3 - old Char\,Level 3 Head Char\,level_3 Char\,PIM 3 Char\,2nd Subhead Char\,Bold Head Char\,bh Char\,ICSS节标记 Char\,3 Char\,PRTM Heading 3 Char\,第二层条 Char\,sect1\.2\.31 Char";
+	mso-style-link:"标题 3\,CSS节内1级标记\,H3\,sect1\.2\.3\,l3\,CT\,h3\,BOD 0\,Heading 3 - old\,Level 3 Head\,level_3\,PIM 3\,2nd Subhead\,Bold Head\,bh\,ICSS节标记\,3\,PRTM Heading 3\,第二层条\,Level 3 Topic Heading\,sect1\.2\.31\,sect1\.2\.32\,sect1\.2\.311\,sect1\.2\.33\,sect1\.2\.312\,Heading 2\.3\,1\.2\.3\.\,Titles\,\(Alt+3\)";
+	font-weight:bold;}
+span.4Char
+	{mso-style-name:"标题 4 Char\,CSS节内2级标记 Char1\,CSS节内2级标记 Char Char\,4 Char\,编号标题 4 Char Char";
+	mso-style-link:"标题 4\,CSS节内2级标记\,CSS节内2级标记 Char\,4\,编号标题 4 Char";
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+span.5Char
+	{mso-style-name:"标题 5 Char\,CSS节内3级标记 Char1\,CSS节内3级标记 Char Char Char Char\,CSS节内3级标记 Char Char\,dash Char\,ds Char\,dd Char\,H5 Char\,h5 Char\,Second Subheading Char\,第四层条 Char\,PIM 5 Char\,Block Label Char\,1\.1\.1 Char\,口 Char\,heading 5 Char\,h51 Char\,heading 51 Char\,h52 Char\,5 Char";
+	mso-style-link:"标题 5\,CSS节内3级标记\,CSS节内3级标记 Char Char Char\,CSS节内3级标记 Char\,dash\,ds\,dd\,H5\,h5\,Second Subheading\,第四层条\,PIM 5\,Block Label\,1\.1\.1\,口\,heading 5\,h51\,heading 51\,h52\,heading 52\,h53\,heading 53\,Level 3 - i\,5\,l4\,标 5\,H51\,H52\,H53\,第五层\,Roman list\,标题5金审";
+	font-family:"Calibri","sans-serif";
+	font-weight:bold;}
+span.6Char
+	{mso-style-name:"标题 6 Char\,CSS节内4级标记 Char\,6 Char";
+	mso-style-link:"标题 6\,CSS节内4级标记\,6";
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+span.Char4
+	{mso-style-name:"正文文本 Char\,Body Text\(ch\) Char\,body text Char\,bt Char";
+	mso-style-link:"正文文本\,Body Text\(ch\)\,body text\,bt";
+	font-family:宋体;}
+p.list2, li.list2, div.list2
+	{mso-style-name:list2;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:45.1pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:-21.0pt;
+	font-size:10.5pt;
+	font-family:"Times New Roman","serif";}
+span.apple-converted-space
+	{mso-style-name:apple-converted-space;}
+.MsoChpDefault
+	{font-family:"Calibri","sans-serif";}
+ /* Page Definitions */
+ @page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;
+	layout-grid:15.6pt;}
+div.WordSection1
+	{page:WordSection1;}
+@page WordSection2
+	{size:595.3pt 841.9pt;
+	margin:72.0pt 89.85pt 72.0pt 89.85pt;
+	layout-grid:15.6pt 0pt;}
+div.WordSection2
+	{page:WordSection2;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+<title>RAE产品白皮书</title>
+</head>
+
+<body lang=ZH-CN style='text-justify-trim:punctuation'>
+
+<b><span lang=EN-US style='font-size:16.0pt;font-family:"Calibri","sans-serif"'><br
+clear=all style='page-break-before:always'>
+</span></b>
+
+<div class=WordSection2 style='layout-grid:15.6pt 0pt'>
+
+<h1 style='margin-left:0cm;text-indent:0cm'><span lang=EN-US>第1章<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+style='font-family:宋体'>概述</span></h1>
+
+<h2 style='margin-left:0cm;text-indent:0cm'><span lang=EN-US>1.1 </span><span
+style='font-family:宋体'>开发背景</span></h2>
+
+<p class=MsoNormal style='text-indent:21.0pt;line-height:150%'><span
+style='line-height:150%;font-family:宋体'>云计算发展正热火朝天，作为云计算产业的重要领域，</span><span
+lang=EN-US style='line-height:150%;font-family:"Tahoma","sans-serif"'>PaaS</span><span
+style='line-height:150%;font-family:宋体'>已经成为各大企业角逐未来的重要阵营。由于</span><span
+lang=EN-US style='line-height:150%;font-family:"Tahoma","sans-serif"'>IaaS</span><span
+style='line-height:150%;font-family:宋体'>和</span><span lang=EN-US
+style='line-height:150%;font-family:"Tahoma","sans-serif"'>SaaS</span><span
+style='line-height:150%;font-family:宋体'>已经实现了商品化，云环境中众多应用软件都实现了标准化，用户都需要充分利用</span><span
+lang=EN-US style='line-height:150%;font-family:"Tahoma","sans-serif"'>PaaS</span><span
+style='line-height:150%;font-family:宋体'>带来的创新解决方案，而服务提供商则需要该解决方案来体现自己的差异化竞争。</span></p>
+
+<p class=MsoNormal style='text-indent:21.0pt;line-height:150%'><span
+style='line-height:150%;font-family:宋体'>中软国际信息技术有限公司多年的技术积累和强大的研发实力，充分论证和深入研究当今技术发展趋势和行业应用特点，结合政府报告对十二五规划对物联网、三网融合、移动互联网以及云计算战略的大力支持，采用先进的</span><span
+lang=EN-US style='line-height:150%;font-family:"Tahoma","sans-serif"'>SNA</span><span
+style='line-height:150%;font-family:宋体'>架构，基于持续化集成与分布式处理等推出了</span><span
+lang=EN-US style='line-height:150%;font-family:"Tahoma","sans-serif"'>RAE</span><span
+style='line-height:150%;font-family:宋体'>云应用引擎服务。</span></p>
+
+<p class=MsoNormal style='text-indent:21.0pt;line-height:150%'><span
+style='line-height:150%;font-family:宋体'>众所周知，</span><span lang=EN-US
+style='line-height:150%;font-family:"Tahoma","sans-serif"'>PaaS</span><span
+style='line-height:150%;font-family:宋体'>作为一种服务模式，可以推进</span><span lang=EN-US
+style='line-height:150%;font-family:"Tahoma","sans-serif"'>SaaS</span><span
+style='line-height:150%;font-family:宋体'>的发展，可以提高</span><span lang=EN-US
+style='line-height:150%;font-family:"Tahoma","sans-serif"'>Web</span><span
+style='line-height:150%;font-family:宋体'>平台上可利用的资源数量。</span><span lang=EN-US
+style='line-height:150%;font-family:"Tahoma","sans-serif"'>RAE</span><span
+style='line-height:150%;font-family:宋体'>云应用引擎服务正是朝着云计算的步伐采用前沿的技术架构为用户级企业在应用程序的部署提供便利的解决方案，简化了购买和管理底层软硬件的复杂性，也降低了成本。</span></p>
+
+<h2 style='margin-left:0cm;text-indent:0cm'><span lang=EN-US>1.2 </span><span
+style='font-family:宋体'>系统介绍</span></h2>
+
+<p class=MsoNormal style='text-indent:21.0pt;line-height:150%'><span
+lang=EN-US style='line-height:150%;font-family:"Tahoma","sans-serif"'>RAE </span><span
+style='line-height:150%;font-family:宋体'>引擎承担着调用底层基础资源、为上层业务系统提供支持的重要任务，通过优化中间件堆栈、共享服务、集成功能和自动化管理功能实现简化</span><span
+lang=EN-US style='line-height:150%;font-family:"Tahoma","sans-serif"'>IT</span><span
+style='line-height:150%;font-family:宋体'>管理，</span><span lang=EN-US
+style='line-height:150%;font-family:"Tahoma","sans-serif"'>RAE</span><span
+style='line-height:150%;font-family:宋体'>不仅大幅提升运维效率、降低相关成本，同时，使应用基础架构虚拟化、管理能力自优化，增强系统的灵活性、稳定性及可用性，提升云计算应用的服务水平。</span></p>
+
+<p class=MsoNormal style='text-indent:21.0pt;line-height:150%'><span
+style='line-height:150%;font-family:宋体'>消费者借助于</span><span lang=EN-US
+style='line-height:150%;font-family:"Tahoma","sans-serif"'>RCloud</span><span
+style='line-height:150%;font-family:宋体'>平台所提供的编程语言（例如</span><span lang=EN-US
+style='line-height:150%;font-family:"Tahoma","sans-serif"'>Java</span><span
+style='line-height:150%;font-family:宋体'>，</span><span lang=EN-US
+style='line-height:150%;font-family:"Tahoma","sans-serif"'>Python</span><span
+style='line-height:150%;font-family:宋体'>，</span><span lang=EN-US
+style='line-height:150%;font-family:"Tahoma","sans-serif"'>.Net</span><span
+style='line-height:150%;font-family:宋体'>）和工具（</span><span lang=EN-US
+style='line-height:150%;font-family:"Tahoma","sans-serif"'>Studio</span><span
+style='line-height:150%;font-family:宋体'>），开发应用的能力。消费者并不管理和控制云的基础设施、网络、服务器、操作系统或存储等，</span><span
+style='line-height:150%;font-family:"Tahoma","sans-serif"'> <span lang=EN-US>RAE</span></span><span
+style='line-height:150%;font-family:宋体'>借助于一些简单的技术对操作系统或平台进行必要的配置以引入一个较高的水准。它提供直接加载一些服务到平台的能力。像在一个标准的环境下被预配置成为一个支持指定的编程语言平台。在一个企业或行业平台可以建成一个指定的应用，以完成管理或治理能力。</span></p>
+
+<p class=MsoNormal style='text-indent:21.0pt;line-height:150%'><span
+lang=EN-US style='line-height:150%;font-family:"Tahoma","sans-serif"'>RCloudApplication
+Engine</span><span style='line-height:150%;font-family:宋体'>（以下简称</span><span
+lang=EN-US style='line-height:150%;font-family:"Tahoma","sans-serif"'>RAE</span><span
+style='line-height:150%;font-family:宋体'>）是基于云计算基础设施服务的应用托管平台</span><span
+lang=EN-US style='line-height:150%;font-family:"Tahoma","sans-serif"'>,</span><span
+lang=EN-US style='line-height:150%;font-family:"Tahoma","sans-serif";
+color:black'> </span><span style='line-height:150%;font-family:宋体;color:black'>内置多种应用框架，</span><span
+style='line-height:150%;font-family:宋体'>帮助企业及开发者快速地部署应用，以适配多种运行环境、安全可靠的自愈机制、便捷的运管体系等技术方案为后盾，降低项目开发周期和资源成本。同时，</span><span
+lang=EN-US style='line-height:150%;font-family:"Tahoma","sans-serif"'>RAE</span><span
+style='line-height:150%;font-family:宋体'>支持多种语言运行，通过弹性伸缩、安全隔离、故障恢复、智能路由等技术，保障云应用的低成本、高效率的稳定运行，同时通过完善的监控统计与日志管理提升用户体验。</span></p>
+
+<h2 style='margin-left:0cm;text-indent:0cm'><span lang=EN-US>1.3 </span><span
+style='font-family:宋体'>采用的标准</span></h2>
+
+<p class=MsoNormal style='text-indent:21.0pt;line-height:150%'><span
+lang=EN-US style='line-height:150%;font-family:"Tahoma","sans-serif"'>RAE</span><span
+style='line-height:150%;font-family:宋体'>是</span><span lang=EN-US
+style='line-height:150%;font-family:"Tahoma","sans-serif"'> RCloud</span><span
+style='line-height:150%;font-family:宋体'>云平台的应用引擎，在其研发过程中严格按照国家标准和相关的国际标准执行，遵循和参照的标准有：</span></p>
+
+<p class=MsoBodyText style='margin-left:53.95pt;text-indent:-21.0pt'><span
+lang=EN-US>1)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><span
+lang=EN-US>GB 8566-88 </span>计算机软件开发规范；</p>
+
+<p class=MsoBodyText style='margin-left:53.95pt;text-indent:-21.0pt'><span
+lang=EN-US>2)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><span
+lang=EN-US>GB/T 12504-90 </span>计算机软件质量保证计划规范；</p>
+
+<p class=MsoBodyText style='margin-left:53.95pt;text-indent:-21.0pt'><span
+lang=EN-US>3)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><span
+lang=EN-US>GB/T 12505-90 </span>计算机软件配置管理计划规范；</p>
+
+<p class=MsoBodyText style='margin-left:53.95pt;text-indent:-21.0pt'><span
+lang=EN-US>4)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><span
+lang=EN-US>GB/T 14079-93 </span>软件维护指南；</p>
+
+<p class=MsoBodyText style='margin-left:53.95pt;text-indent:-21.0pt'><span
+lang=EN-US>5)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><span
+lang=EN-US>GB/T 16680-1996 </span>软件文档管理指南；</p>
+
+<h1 style='margin-left:0cm;text-indent:0cm'><span lang=EN-US>第2章<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+style='font-family:宋体'>适用场景</span></h1>
+
+<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='line-height:150%;font-family:Wingdings;
+color:#F79646'>&Oslash;<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='line-height:150%;font-family:宋体'>在实际应用中，</span><span lang=EN-US
+style='line-height:150%;font-family:"Tahoma","sans-serif"'>RAE</span><span
+style='line-height:150%;font-family:宋体'>云应用引擎的重要应用场景之一是向用户交付一个支撑应用运行的应用运行平台（</span><span
+lang=EN-US style='line-height:150%;font-family:"Tahoma","sans-serif"'>Applications
+Running Platform</span><span style='line-height:150%;font-family:宋体'>，以下简称</span><span
+lang=EN-US style='line-height:150%;font-family:"Tahoma","sans-serif"'> ARP</span><span
+style='line-height:150%;font-family:宋体'>）。</span></p>
+
+<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='line-height:150%;font-family:Wingdings;
+color:#F79646'>&Oslash;<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='line-height:150%;font-family:宋体'>提供定义应用需求的接口：用户可以方便地定义满足应用功能需求所需的组件；</span></p>
+
+<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='line-height:150%;font-family:Wingdings;
+color:#F79646'>&Oslash;<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='line-height:150%;font-family:宋体'>提供基于应用需求快速构建应用运行环境的能力；</span></p>
+
+<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings;color:#F79646'>&Oslash;<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='line-height:150%;font-family:宋体'>提供运行时实时动态满足应用需求的能力：将应用需求映射为运行策略，在运行时，根据系统运行的实际状况，动态地调整负载分配或增减计算资源，使</span><span
+lang=EN-US style='line-height:150%;font-family:"Tahoma","sans-serif"'> ARP </span><span
+style='line-height:150%;font-family:宋体'>具备足够的弹性和灵活性，以实时动态地满足应用需求。</span></p>
+
+<h1 style='margin-left:0cm;text-indent:0cm'><span lang=EN-US>第3章<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+style='font-family:宋体'>技术架构</span></h1>
+
+<h2 style='margin-left:0cm;text-indent:0cm'><span lang=EN-US>3.1 </span><span
+style='font-family:宋体'>技术架构</span></h2>
+
+<p class=MsoNormal style='line-height:150%'><span lang=EN-US><img width=554
+height=538 src="RAE_white_paper.files/image002.gif">&nbsp; RAE</span><span
+style='font-family:宋体'>云应用引擎在系统设计过程中，始终贯穿着模块化、层次化和参数化的设计思想和原则，从体系结构上主要分为以下几个层次：</span></p>
+
+<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings'>u<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>消息总线</span></p>
+
+<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings'>u<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>智能路由</span></p>
+
+<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings'>u<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>认证鉴权</span></p>
+
+<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings'>u<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>管控层</span></p>
+
+<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings'>u<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>服务层</span></p>
+
+<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings'>u<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>部署层</span></p>
+
+<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings'>u<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>监控层</span></p>
+
+<p class=MsoNormal style='text-indent:21.0pt;line-height:150%'><span
+style='font-family:宋体'>从图中可以看到，整个</span><span lang=EN-US>RAE</span><span
+style='font-family:宋体'>云应用引擎体系结构呈现非常清晰的层次结构，每一个层次由一个或多个子系统组成。各个层次、各个子系统之间互相提供接口，协同工作，完成完整的应用托管流程。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:150%'><span
+lang=EN-US><img width=554 height=240 src="RAE_white_paper.files/image003.gif"></span></p>
+
+<h2 style='margin-left:0cm;text-indent:0cm'><span lang=EN-US>3.2 </span><span
+style='font-family:宋体'>功能介绍</span></h2>
+
+<h3 style='margin-left:0cm;text-indent:0cm'><span lang=EN-US>3.2.1 </span><span
+style='font-family:宋体'>消息总线层</span></h3>
+
+<p class=MsoListParagraph style='margin-left:21.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings'>v<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>消息中间件</span></p>
+
+<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings;color:#F79646'>&Oslash;<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>基于</span><span lang=EN-US>Topic</span></p>
+
+<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings;color:#F79646'>&Oslash;<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>发布者以</span><span lang=EN-US>Topic</span><span
+style='font-family:宋体'>发送消息</span></p>
+
+<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings;color:#F79646'>&Oslash;<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>订阅者订阅特定</span><span lang=EN-US>Topic</span><span
+style='font-family:宋体'>并收到</span></p>
+
+<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings;color:#F79646'>&Oslash;<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>是产品的中央通讯系统</span></p>
+
+<h3 style='margin-left:0cm;text-indent:0cm'><span lang=EN-US>3.2.2 </span><span
+style='font-family:宋体'>智能路由层</span></h3>
+
+<p class=MsoListParagraph style='margin-left:21.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings'>v<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>代理组件：</span></p>
+
+<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings;color:#F79646'>&Oslash;<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>高性能的</span><span lang=EN-US> HTTP </span><span
+style='font-family:宋体'>和</span> <span style='font-family:宋体'>反向代理</span> <span
+style='font-family:宋体'>服务器，可以支持作为</span><span lang=EN-US> HTTP</span><span
+style='font-family:宋体'>代理服务器对外进行服务</span></p>
+
+<p class=MsoListParagraph style='margin-left:21.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings'>v<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>负载均衡组件：</span></p>
+
+<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings;color:#F79646'>&Oslash;<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>处理所有</span><span lang=EN-US>HTTP</span><span
+style='font-family:宋体'>流量</span></p>
+
+<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings;color:#F79646'>&Oslash;<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>从系统组件获得信息并实时更新路由表</span></p>
+
+<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings;color:#F79646'>&Oslash;<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>维护分布式路由状态</span></p>
+
+<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings;color:#F79646'>&Oslash;<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>将对</span><span lang=EN-US>URL</span><span
+style='font-family:宋体'>的访问路由至具体的应用</span></p>
+
+<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings;color:#F79646'>&Oslash;<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>在应用实例之间分发流量</span></p>
+
+<h3 style='margin-left:0cm;text-indent:0cm'><span lang=EN-US>3.2.3 </span><span
+style='font-family:宋体'>认证鉴权层</span></h3>
+
+<p class=MsoListParagraph style='margin-left:21.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings'>v<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>认证鉴权组件</span></p>
+
+<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings;color:#F79646'>&Oslash;<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>提供用户认证、鉴权、单点登录的功能。</span> </p>
+
+<h3 style='margin-left:0cm;text-indent:0cm'><span lang=EN-US>3.2.4 </span><span
+style='font-family:宋体'>管控层</span></h3>
+
+<p class=MsoListParagraph style='margin-left:21.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings'>v<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>中控组件</span></p>
+
+<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings;color:#F79646'>&Oslash;<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>处理所有的状态（</span><span lang=EN-US>state</span><span
+style='font-family:宋体'>）变化</span></p>
+
+<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings;color:#F79646'>&Oslash;<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>控制用户、应用和服务</span> </p>
+
+<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings;color:#F79646'>&Oslash;<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>对应用进行打包和预处理</span></p>
+
+<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings;color:#F79646'>&Oslash;<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>对外提供</span><span lang=EN-US>REST&nbsp;API</span><span
+style='font-family:宋体'>接口</span></p>
+
+<h3 style='margin-left:0cm;text-indent:0cm'><span lang=EN-US>3.2.5 </span><span
+style='font-family:宋体'>服务层</span></h3>
+
+<p class=MsoListParagraph style='margin-left:21.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings'>v<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>一个可任意扩展的服务层，按需添加后台服务，通过调度服务自由加载其他后台服务，支撑第三方服务自由挂载。</span></p>
+
+<h3 style='margin-left:0cm;text-indent:0cm'><span lang=EN-US>3.2.6 </span><span
+style='font-family:宋体'>部署层</span></h3>
+
+<p class=MsoListParagraph style='margin-left:21.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings'>v<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>运行包支持服务</span></p>
+
+<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings;color:#F79646'>&Oslash;<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>虚拟运行环境</span></p>
+
+<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings;color:#F79646'>&Oslash;<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>根据部署包类型适配软运行环境</span></p>
+
+<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings;color:#F79646'>&Oslash;<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>查看应用运行状态</span></p>
+
+<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings;color:#F79646'>&Oslash;<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>修改应用运行状态</span></p>
+
+<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings;color:#F79646'>&Oslash;<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>应用版本库</span></p>
+
+<h3 style='margin-left:0cm;text-indent:0cm'><span lang=EN-US>3.2.7 </span><span
+style='font-family:宋体'>监控层</span></h3>
+
+<p class=MsoListParagraph style='margin-left:21.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings'>v<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>资源监控</span></p>
+
+<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings;color:#F79646'>&Oslash;<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>通过系统调度服务，按需获取系统及应用对资源使用情况。</span></p>
+
+<p class=MsoListParagraph style='margin-left:21.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings'>v<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:宋体'>日志组件</span></p>
+
+<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings;color:#F79646'>&Oslash;<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>收集产品各个组件的日志</span></p>
+
+<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings;color:#F79646'>&Oslash;<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:宋体'>收集应用的日志</span></p>
+
+<h1 style='margin-left:0cm;text-indent:0cm'><span lang=EN-US>第4章<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+style='font-family:宋体'>引擎特性</span></h1>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US><img
+width=445 height=258 id="图示 4" src="RAE_white_paper.files/image004.gif"></span></p>
+
+<h2 style='margin-left:0cm;text-indent:0cm'><span lang=EN-US>4.1 </span><span
+style='font-family:宋体'>多语言支持</span></h2>
+
+<p class=MsoNormal style='text-indent:21.0pt;line-height:150%'><span
+lang=EN-US style='line-height:150%;font-family:"Tahoma","sans-serif"'>RAE</span><span
+style='line-height:150%;font-family:宋体'>提供多种语言运行环境，内置多种应用框架，随心所欲进行开发，使开发人员专注于业务设计实现。开发者不需要去考虑网络、存储、机器、域名等等所有这一切所需要的基础设施。</span><span
+lang=EN-US style='line-height:150%;font-family:"Tahoma","sans-serif"'>RAE</span><span
+style='line-height:150%;font-family:宋体'>平台内置</span><span style='font-size:12.0pt;
+line-height:150%;font-family:宋体'>应用所需要的有中间件。</span></p>
+
+<p class=MsoNormal style='text-indent:21.0pt;line-height:150%'><span
+lang=EN-US style='line-height:150%;font-family:"Tahoma","sans-serif"'>RAE</span><span
+style='line-height:150%;font-family:宋体'>支持的框架有包括</span><span lang=EN-US
+style='line-height:150%;font-family:"Tahoma","sans-serif"'>Spring for Java</span><span
+style='line-height:150%;font-family:宋体'>、</span><span lang=EN-US
+style='line-height:150%;font-family:"Tahoma","sans-serif"'>Ruby on Rails</span><span
+style='line-height:150%;font-family:宋体'>、</span><span lang=EN-US
+style='line-height:150%;font-family:"Tahoma","sans-serif"'>Sinatra for Ruby</span><span
+style='line-height:150%;font-family:宋体'>、</span><span lang=EN-US
+style='line-height:150%;font-family:"Tahoma","sans-serif"'>Node.js</span><span
+style='line-height:150%;font-family:宋体'>和</span><span lang=EN-US
+style='line-height:150%;font-family:"Tahoma","sans-serif"'>Python</span><span
+style='line-height:150%;font-family:宋体'>，也支持其他基于</span><span lang=EN-US
+style='line-height:150%;font-family:"Tahoma","sans-serif"'>JVM</span><span
+style='line-height:150%;font-family:宋体'>的框架，例如</span><span lang=EN-US
+style='line-height:150%;font-family:"Tahoma","sans-serif"'>Grails</span><span
+style='font-size:12.0pt;line-height:150%;font-family:宋体'>。</span></p>
+
+<p class=MsoNormal style='text-indent:21.0pt;line-height:150%'><span
+lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:宋体'>RAE</span><span
+style='font-size:12.0pt;line-height:150%;font-family:宋体'>内置的中间件包括</span><span
+lang=EN-US style='line-height:150%;font-family:"Tahoma","sans-serif"'>Tomcat,Jboss,Jetty,Webrick</span><span
+style='line-height:150%;font-family:宋体'>。</span></p>
+
+<h2 style='margin-left:0cm;text-indent:0cm'><span lang=EN-US>4.2 </span><span
+style='font-family:宋体'>弹性伸缩</span></h2>
+
+<p class=MsoNormal style='text-indent:21.0pt;line-height:150%'><span
+style='line-height:150%;font-family:宋体'>传统企业</span><span lang=EN-US
+style='line-height:150%;font-family:"Tahoma","sans-serif"'>IT</span><span
+style='line-height:150%;font-family:宋体'>存在弹性扩展，扩容难等问题。难以应付突发业务流量，难以应对日益增长的数据量，</span><span
+lang=EN-US style='line-height:150%;font-family:"Tahoma","sans-serif"'>RAE</span><span
+style='line-height:150%;font-family:宋体'>平台通过横向、纵向智能扩容机制缓解企业业务系统突发请求量、日益增加的数据量带来的问题。用户也可根据系统业务的特点，通过预先自定义的伸缩策略，实现应用和服务随着业务压力的变化进行定时、定量的弹性伸缩。比如：根据用户初始化应用配置环境的前提下，根据用户配额的资源池容量通过智能最优算法，在超过额定频率或额定请求量时，智能的增加、减少应用实例。</span></p>
+
+<h2 style='margin-left:0cm;text-indent:0cm'><span lang=EN-US>4.3 </span><span
+style='font-family:宋体'>智能启动</span></h2>
+
+<p class=MsoNormal style='text-indent:21.0pt;line-height:150%'><span
+style='line-height:150%;font-family:宋体'>在传统业务发布系统中，无论系统资源及业务请求量如何变化，支撑业务系统运作的服务器永远处在开机运作状态，锁定硬件资源、网络带宽与高额的用电损耗等，</span><span
+lang=EN-US style='line-height:150%;font-family:"Tahoma","sans-serif"'>RAE</span><span
+style='line-height:150%;font-family:宋体'>云应用引擎系统带来非传统的效应是业务应用系统会根据用户使用情况进行智能的休眠、智能唤醒应用，从而为用户节约配置资源降低企业成本。</span></p>
+
+<h2 style='margin-left:0cm;text-indent:0cm'><span lang=EN-US>4.4 </span><span
+style='font-family:宋体'>智能路由</span></h2>
+
+<p class=MsoNormal style='text-indent:21.0pt;line-height:150%'><span
+lang=EN-US style='line-height:150%;font-family:"Tahoma","sans-serif"'>RAE</span><span
+style='line-height:150%;font-family:宋体'>的智能路由功能由代理服务和负载均衡组件完成。代理服务是高性能的</span><span
+lang=EN-US style='line-height:150%;font-family:"Tahoma","sans-serif"'>&nbsp;HTTP&nbsp;</span><span
+style='line-height:150%;font-family:宋体'>和</span><span lang=EN-US
+style='line-height:150%;font-family:"Tahoma","sans-serif"'>&nbsp;</span><span
+style='line-height:150%;font-family:宋体'>反向代理</span><span lang=EN-US
+style='line-height:150%;font-family:"Tahoma","sans-serif"'>&nbsp;</span><span
+style='line-height:150%;font-family:宋体'>服务器，可以支持作为</span><span lang=EN-US
+style='line-height:150%;font-family:"Tahoma","sans-serif"'>&nbsp;HTTP</span><span
+style='line-height:150%;font-family:宋体'>代理服务器对外进行服务。负载均衡组件负责接收</span><span
+lang=EN-US style='line-height:150%;font-family:"Tahoma","sans-serif"'>RAE</span><span
+style='line-height:150%;font-family:宋体'>内部组件及应用</span><span lang=EN-US
+style='line-height:150%;font-family:"Tahoma","sans-serif"'>uri</span><span
+style='line-height:150%;font-family:宋体'>注册以及注销的请求，负责转发所有外部对</span><span
+lang=EN-US style='line-height:150%;font-family:"Tahoma","sans-serif"'>RAE</span><span
+style='line-height:150%;font-family:宋体'>的访问请求，负责提供负载均衡组件作为一个组件的状态监控。维护分布式路由状态，将对</span><span
+lang=EN-US style='line-height:150%;font-family:"Tahoma","sans-serif"'>URL</span><span
+style='line-height:150%;font-family:宋体'>的访问路由至具体的应用。</span></p>
+
+<p class=MsoNormal style='text-indent:21.0pt;line-height:150%'><span
+lang=EN-US style='line-height:150%;font-family:"Tahoma","sans-serif"'>RAE</span><span
+style='line-height:150%;font-family:宋体'>通过采用主机心跳率、响应时间及任务均分技术等负载均衡算法，让每个实例保持相近的负载，保证应用运行的平稳，特别是在有新增加的实例时，可以快速让新实例分担其它实例的压力。</span></p>
+
+<h2 style='margin-left:0cm;text-indent:0cm'><span lang=EN-US>4.5 </span><span
+style='font-family:宋体'>故障恢复</span></h2>
+
+<p class=MsoNormal style='text-indent:21.0pt;line-height:150%'><span
+style='line-height:150%;font-family:宋体'>在传统企业服务器机房部署的应用，在遇突发事件（断电、断网、宕机或硬件故障灯）时，在故障恢复后应用无法继续服务了，需要人工到达现场并进行人机干预，无形增加了业务系统故障率，提高了系统运维成功。其</span><span
+lang=EN-US style='line-height:150%;font-family:"Tahoma","sans-serif"'>RAE</span><span
+style='line-height:150%;font-family:宋体'>云应用引擎自身具备应用故障自愈机制，通过低成本、高效率满足用户业务需求。</span></p>
+
+<p class=MsoNormal style='text-indent:21.0pt;line-height:150%'><span
+lang=EN-US style='line-height:150%;font-family:"Tahoma","sans-serif"'>RAE</span><span
+style='line-height:150%;font-family:宋体'>提供自身组件及部署在平台上的应用出现故障时自愈机制，通过守护服务、健康探测保证平台高可靠、应用高稳定的运行，降低企业运维成本。在传统监控之上，增加了健康检查机制，实例的智能重启与漂移机制，降低企业传统故障率及后期运维成功。</span><span
+style='line-height:150%;font-family:"Tahoma","sans-serif"'> </span></p>
+
+<h2 style='margin-left:0cm;text-indent:0cm'><span lang=EN-US>4.6 </span><span
+style='font-family:宋体'>安全隔离</span></h2>
+
+<p class=MsoNormal style='text-indent:21.0pt;line-height:150%'><span
+style='line-height:150%;font-family:宋体'>目标是确保隔离有害的攻击，在可信网络之外和保证可信网络内部信息不外泄的前提下，满足用户复杂和高带宽需求的网间数据安全交换，为用户提供卓越、安全的运行平台。</span></p>
+
+<h3 style='margin-left:0cm;text-indent:0cm'><span lang=EN-US>4.6.1 </span><span
+style='font-family:宋体'>网络安全</span></h3>
+
+<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='line-height:150%;font-family:Wingdings'>v<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='line-height:150%;font-family:宋体'>网络映射</span></p>
+
+<p class=MsoListParagraph style='margin-left:63.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='line-height:150%;font-family:Wingdings;
+color:#F79646'>&Oslash;<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='line-height:150%;font-family:宋体'>容器独享虚拟网卡</span></p>
+
+<p class=MsoListParagraph style='margin-left:63.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='line-height:150%;font-family:Wingdings;
+color:#F79646'>&Oslash;<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='line-height:150%;font-family:宋体'>网卡与宿主主机一一端口映射</span></p>
+
+<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='line-height:150%;font-family:Wingdings'>v<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='line-height:150%;font-family:宋体'>网络资源限制</span></p>
+
+<p class=MsoNormal style='margin-left:21.0pt;text-indent:21.0pt;line-height:
+150%'><span style='line-height:150%;font-family:宋体'>采用内核<span lang=EN-US>Iptables</span>与<span
+lang=EN-US>&nbsp;Traffic Control</span>技术，对协议栈出入包进行有规则的过滤等，主要体现在以下几点：</span></p>
+
+<p class=MsoListParagraph style='margin-left:63.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='line-height:150%;font-family:Wingdings;
+color:#F79646'>&Oslash;<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='line-height:150%;font-family:宋体'>深层速率控制技术</span><span lang=EN-US
+style='line-height:150%;font-family:"Tahoma","sans-serif"'>(Deeper&nbsp;Rate&nbsp;Control)</span></p>
+
+<p class=MsoListParagraph style='margin-left:63.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='line-height:150%;font-family:Wingdings;
+color:#F79646'>&Oslash;<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='line-height:150%;font-family:宋体'>带宽分配优先（</span><span lang=EN-US
+style='line-height:150%;font-family:"Tahoma","sans-serif"'>Priorizing bandwidth
+share</span><span style='line-height:150%;font-family:宋体'>）</span></p>
+
+<p class=MsoListParagraph style='margin-left:63.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='line-height:150%;font-family:Wingdings;
+color:#F79646'>&Oslash;<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='line-height:150%;font-family:宋体'>排队规则（</span><span lang=EN-US
+style='line-height:150%;font-family:"Tahoma","sans-serif"'>tc qdisc</span><span
+style='line-height:150%;font-family:宋体'>）</span></p>
+
+<p class=MsoListParagraph style='margin-left:63.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='line-height:150%;font-family:Wingdings;
+color:#F79646'>&Oslash;<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='line-height:150%;font-family:宋体'>类别（</span><span lang=EN-US
+style='line-height:150%;font-family:"Tahoma","sans-serif"'>tc class</span><span
+style='line-height:150%;font-family:宋体'>）</span></p>
+
+<p class=MsoListParagraph style='margin-left:63.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='line-height:150%;font-family:Wingdings;
+color:#F79646'>&Oslash;<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='line-height:150%;font-family:宋体'>过滤器（</span><span lang=EN-US
+style='line-height:150%;font-family:"Tahoma","sans-serif"'>tc filter</span><span
+style='line-height:150%;font-family:宋体'>）</span></p>
+
+<h3 style='margin-left:0cm;text-indent:0cm'><span lang=EN-US>4.6.2 </span><span
+style='font-family:宋体'>资源安全</span></h3>
+
+<p class=MsoNormal style='margin-left:21.0pt;text-indent:21.0pt;line-height:
+150%'><span style='line-height:150%;font-family:宋体'>通过<span lang=EN-US>Cgroup</span>（全称<span
+lang=EN-US>control group</span>）对进程的行为控制，主要控制单元有：</span></p>
+
+<p class=MsoListParagraph style='margin-left:63.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='line-height:150%;font-family:Wingdings;
+color:#F79646'>&Oslash;<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+lang=EN-US style='line-height:150%;font-family:"Tahoma","sans-serif"'>CPU</span><span
+style='line-height:150%;font-family:宋体'>核数及进程优先权</span></p>
+
+<p class=MsoListParagraph style='margin-left:63.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='line-height:150%;font-family:Wingdings;
+color:#F79646'>&Oslash;<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+lang=EN-US style='line-height:150%;font-family:"Tahoma","sans-serif"'>Memory</span><span
+style='line-height:150%;font-family:宋体'>大小的限制</span></p>
+
+<p class=MsoListParagraph style='margin-left:63.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='line-height:150%;font-family:Wingdings;
+color:#F79646'>&Oslash;<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+lang=EN-US style='line-height:150%;font-family:"Tahoma","sans-serif"'>Quota</span><span
+style='line-height:150%;font-family:宋体'>硬盘资源大小分配及读写权限</span></p>
+
+<h2 style='margin-left:0cm;text-indent:0cm'><span lang=EN-US>4.7 </span><span
+style='font-family:宋体'>管理与监控</span></h2>
+
+<p class=MsoNormal style='text-indent:21.0pt;line-height:150%'><span
+lang=EN-US style='line-height:150%;font-family:"Tahoma","sans-serif"'>RAE</span><span
+style='line-height:150%;font-family:宋体'>监控通过对</span><span lang=EN-US
+style='line-height:150%;font-family:"Tahoma","sans-serif"'>HTTP</span><span
+style='line-height:150%;font-family:宋体'>请求次数</span><span lang=EN-US
+style='line-height:150%;font-family:"Tahoma","sans-serif"'>, Letency</span><span
+style='line-height:150%;font-family:宋体'>监控</span><span lang=EN-US
+style='line-height:150%;font-family:"Tahoma","sans-serif"'>,HTTP</span><span
+style='line-height:150%;font-family:宋体'>请求错误</span><span lang=EN-US
+style='line-height:150%;font-family:"Tahoma","sans-serif"'>(4xx,5xx)</span><span
+style='line-height:150%;font-family:宋体'>监控</span><span lang=EN-US
+style='line-height:150%;font-family:"Tahoma","sans-serif"'>,Instances</span><span
+style='line-height:150%;font-family:宋体'>个数，运行状态，内存使用量，硬盘使用量和网络</span><span
+lang=EN-US style='line-height:150%;font-family:"Tahoma","sans-serif"'>I/O</span><span
+style='line-height:150%;font-family:宋体'>的监控展示应用的健康状况，似的用户能够一目了然的了解自己的应用。</span></p>
+
+<p class=MsoNormal style='text-indent:21.0pt;line-height:150%'><span
+style='line-height:150%;font-family:宋体'>日志是提供给云擎平台上应用开发者用于系统问题定位，掌握线上运行状况和系统访问情况的日志服务。开发者可以对最近<span
+lang=EN-US>7</span>天的日志进行准实时搜索。目前提供三类日志：页面访问日志、应用输出日志、应用错误日志。用户可以根据基于关键字筛选日志、基于时间段筛选日志、基于时间顺序分析日志趋势。云日志解决用户无法接触应用的运行环境，从而导致定位排查问题是非常困难。</span></p>
+
+<h1 style='margin-left:0cm;text-indent:0cm'><span lang=EN-US>第5章<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-US>RAE</span><span style='font-family:宋体'>的应用</span></h1>
+
+<p class=MsoListParagraph style='margin-left:21.0pt;text-indent:-21.0pt;
+line-height:150%'><span lang=EN-US style='font-family:Wingdings'>v<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><b><span
+style='font-family:宋体'>丽水政务云</span></b></p>
+
+<p class=MsoNormal style='text-indent:21.0pt;line-height:150%'><span
+style='line-height:150%;font-family:宋体'>丽水市的“智慧政务”试点，是浙江省政府“智慧城市”建设的一项重要内容，也是“智慧浙江”建设在电子政务领域的率先探索。中软国际在项目中兼具总集成商、总服务商和总运营商权责。承担丽水智慧政务云示范试点项目建设的咨询、规划、调研、开发、技术指导、总体设计和实施工作；基于阿里云计算平台及自主知识产权产品的“</span><span
+lang=EN-US style='line-height:150%;font-family:"Tahoma","sans-serif"'>ResourceOne&nbsp;Cloud</span><span
+style='line-height:150%;font-family:宋体'>”</span><span style='line-height:150%;
+font-family:"Tahoma","sans-serif"'> </span><span style='line-height:150%;
+font-family:宋体'>中间件，完成丽水智慧政务云示范试点项目的顶层设计及整体规划；将政府现有政务应用迁移至云平台，并承担核心云应用的建设工作；约定承担丽水智慧政务云示范试点项目的</span><span
+lang=EN-US style='line-height:150%;font-family:"Tahoma","sans-serif"'>2016</span><span
+style='line-height:150%;font-family:宋体'>年起的十年期的政务云平台的建设、运维、运营工作。同时标志着丽水市电子政务将借助中软国际强大的云服务能力，承担起全省“智慧政务”试点的重任。相信在此强强联合背景之下，浙江丽水智慧政务云平台在智慧城市的建设领域中将会迅速发展成为行业标杆。</span></p>
+
+</div>
+
+</body>
+
+</html>
